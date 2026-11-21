@@ -1,0 +1,50 @@
+name: Sync OpenAPI to SwaggerHub
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'DMS-Guide/**'
+      - 'Product-API/**'
+  workflow_dispatch:
+
+env:
+  SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_API_KEY }}
+  DMS_API: openapi-cmos/DMS-ERP/4.0.0
+  PRODUCT_API: openapi-cmos/CMOS-Clear-ProductAPI/4.0.0
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            dms:
+              - 'DMS-Guide/**'
+            product:
+              - 'Product-API/**'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar SwaggerHub CLI
+        run: npm install -g swaggerhub-cli
+
+      - name: Actualizar DMS-ERP
+        if: github.event_name == 'workflow_dispatch' || steps.filter.outputs.dms == 'true'
+        run: |
+          swaggerhub api:unpublish $DMS_API || true
+          swaggerhub api:update $DMS_API --file DMS-Guide/openapi.yaml
+          swaggerhub api:publish $DMS_API
+
+      - name: Actualizar CMOS-Clear-ProductAPI
+        if: github.event_name == 'workflow_dispatch' || steps.filter.outputs.product == 'true'
+        run: |
+          swaggerhub api:unpublish $PRODUCT_API || true
+          swaggerhub api:update $PRODUCT_API --file Product-API/openapi.yaml
+          swaggerhub api:publish $PRODUCT_API
