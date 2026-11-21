@@ -39,12 +39,12 @@ jobs:
         if: github.event_name == 'workflow_dispatch' || steps.filter.outputs.dms == 'true'
         run: |
           swaggerhub api:unpublish $DMS_API || true
-          swaggerhub api:update $DMS_API --file DMS-Guide/openapi.yaml
+          swaggerhub api:update $DMS_API --file DMS-Guide/openapi.yaml --visibility=public
           swaggerhub api:publish $DMS_API
 
       - name: Actualizar CMOS-Clear-ProductAPI
         if: github.event_name == 'workflow_dispatch' || steps.filter.outputs.product == 'true'
         run: |
           swaggerhub api:unpublish $PRODUCT_API || true
-          swaggerhub api:update $PRODUCT_API --file Product-API/openapi.yaml
+          swaggerhub api:update $PRODUCT_API --file Product-API/openapi.yaml --visibility=public
           swaggerhub api:publish $PRODUCT_API
