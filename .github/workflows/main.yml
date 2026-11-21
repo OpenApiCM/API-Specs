@@ -14,7 +14,11 @@ env:
   PRODUCT_API: openapi-cmos/CMOS-Clear-ProductAPI/4.0.0
 
 jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+
   sync:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,16 +39,24 @@ jobs:
       - name: Instalar SwaggerHub CLI
         run: npm install -g swaggerhub-cli
 
+      # A published SwaggerHub version is read-only, so it is unpublished, updated and published again.
+      # If the update fails, the previous version is published again so the docs never stay unpublished.
       - name: Actualizar DMS-ERP
         if: github.event_name == 'workflow_dispatch' || steps.filter.outputs.dms == 'true'
         run: |
           swaggerhub api:unpublish $DMS_API || true
-          swaggerhub api:update $DMS_API --file DMS-Guide/openapi.yaml --visibility=public
+          if ! swaggerhub api:update $DMS_API --file DMS-Guide/openapi.yaml --visibility=public; then
+            swaggerhub api:publish $DMS_API
+            exit 1
+          fi
           swaggerhub api:publish $DMS_API
 
       - name: Actualizar CMOS-Clear-ProductAPI
         if: github.event_name == 'workflow_dispatch' || steps.filter.outputs.product == 'true'
         run: |
           swaggerhub api:unpublish $PRODUCT_API || true
-          swaggerhub api:update $PRODUCT_API --file Product-API/openapi.yaml --visibility=public
+          if ! swaggerhub api:update $PRODUCT_API --file Product-API/openapi.yaml --visibility=public; then
+            swaggerhub api:publish $PRODUCT_API
+            exit 1
+          fi
           swaggerhub api:publish $PRODUCT_API

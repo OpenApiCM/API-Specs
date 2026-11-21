@@ -1,7 +1,10 @@
 openapi: 3.0.2
 info:
   title: APIs de ClearMechanic
-  description: API abierta de producto para ClearMechanic para la Gestión de Taller. / Open API for ClearMechanic Workshop Management.
+  description: |-
+    API abierta de producto para ClearMechanic para la Gestión de Taller. / Open API for ClearMechanic Workshop Management.
+
+    Consulta la guía de las distintas integraciones en [ClearMechanic Integration Docs](https://oaintegrationdocs.clearmechanic.com/#/es/overview). / See the guide for the different integrations at [ClearMechanic Integration Docs](https://oaintegrationdocs.clearmechanic.com/#/es/overview).
   version: 4.0.0
   contact:
     email: openapi@clearcheck.us

@@ -1,0 +1,345 @@
+# This file instructs Redocly's linter to ignore the rules contained for specific parts of your API.
+# See https://redocly.com/docs/cli/ for more information.
+Product-API/openapi.yaml:
+  no-empty-servers:
+    - '#/openapi'
+  info-license:
+    - '#/info'
+  no-invalid-media-type-examples:
+    - >-
+      #/paths/~1cm~1v2~1appointments/post/requestBody/content/application~1json/examples/standard_reasons/value/technicianId
+    - >-
+      #/paths/~1cm~1v2~1appointments/post/requestBody/content/application~1json/examples/standard_reasons/value/technicianExternalId
+    - >-
+      #/paths/~1cm~1v2~1appointments/post/requestBody/content/application~1json/examples/standard_reasons/value/appointmentOriginId
+    - >-
+      #/paths/~1cm~1v2~1appointments/post/requestBody/content/application~1json/examples/custom_reasons/value/technicianId
+    - >-
+      #/paths/~1cm~1v2~1appointments/post/requestBody/content/application~1json/examples/custom_reasons/value/technicianExternalId
+    - >-
+      #/paths/~1cm~1v2~1appointments/post/requestBody/content/application~1json/examples/custom_reasons/value/appointmentOriginId
+    - >-
+      #/paths/~1cm~1appointments/get/responses/200/content/application~1json/examples/Citas/value/data/data
+    - >-
+      #/paths/~1cm~1appointments~1{appointmentNumber}/patch/responses/200/content/application~1json/examples/Cita
+      actualizada/value/success
+    - >-
+      #/paths/~1cm~1appointments~1{appointmentNumber}/patch/responses/200/content/application~1json/examples/Cita
+      actualizada/value/message
+    - >-
+      #/paths/~1cm~1appointments~1{appointmentNumber}/patch/responses/200/content/application~1json/examples/Cita
+      actualizada/value/data
+    - >-
+      #/paths/~1cm~1v2~1orders/post/requestBody/content/application~1json/examples/Orden
+      por crear/value/inspectionItems/0
+    - >-
+      #/paths/~1cm~1v2~1orders/post/requestBody/content/application~1json/examples/Orden
+      por crear/value/inspectionItems/0/comments
+    - >-
+      #/paths/~1cm~1v2~1orders/post/requestBody/content/application~1json/examples/Orden
+      por crear/value/inspectionItems/0/jobs/0
+    - >-
+      #/paths/~1cm~1v2~1orders/post/requestBody/content/application~1json/examples/Orden
+      por crear/value/inspectionItems/0/jobs/0/labors
+    - >-
+      #/paths/~1cm~1v2~1orders/post/requestBody/content/application~1json/examples/Orden
+      por crear/value/customizableFields/5/additionalText
+    - >-
+      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
+      creada/value/data/businessName
+    - >-
+      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
+      creada/value/data/documentType
+    - >-
+      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
+      creada/value/data/identificationNumber
+    - >-
+      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
+      creada/value/data/phase
+    - >-
+      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
+      creada/value/data/inCharge
+    - >-
+      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
+      creada/value/data/assignedTo
+    - >-
+      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
+      creada/value/data/notes
+    - >-
+      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
+      creada/value/data/promisedDate
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/inspectionFormStatus
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/timeUntilFirstContactWithCustomer
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/digitalROLink
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/inspectionLink
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/inspectionItems/0
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/inspectionItems/0/jobs
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/inspectionItems/0/cmosInspectionItemId
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/inspectionItems/0/externalInspectionItemId
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/customizableFields/5/additionalText
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/lastUpdateTime
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/estimateNotes
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/cmosAppointmentId
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/inspectionFormStatus
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/trimLevel
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/manufacturedIn
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/bodyStyle
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/engineType
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/antiBrakeSystem
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/driveLine
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/otherComments
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/dmsAdditionalData
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/dmsInvoice
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/dmsAppointmentNumber
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/dmsTot
+    - >-
+      #/paths/~1cm~1v2~1orders~1{orderNumber}/patch/responses/204/content/application~1json/examples/Órdenes/value/data/0/customizableFields
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1close/put/responses/200/content/application~1json/examples/Órdenes/value/data
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1reopen/put/responses/200/content/application~1json/examples/Órdenes/value/data
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems/post/requestBody/content/application~1json/examples/Parte
+      o mano de obra a crear/value/estimates/0/hours
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems/post/requestBody/content/application~1json/examples/Parte
+      o mano de obra a crear/value/estimates/0/hourPrice
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems/post/requestBody/content/application~1json/examples/Parte
+      o mano de obra a crear/value/estimates/0/unitCost
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems/post/requestBody/content/application~1json/examples/Parte
+      o mano de obra a crear/value/estimates/1/quantity
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems/post/requestBody/content/application~1json/examples/Parte
+      o mano de obra a crear/value/estimates/1/unitPrice
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems/post/requestBody/content/application~1json/examples/Parte
+      o mano de obra a crear/value/estimates/1/availability
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems/post/requestBody/content/application~1json/examples/Parte
+      o mano de obra a crear/value/estimates/1/unitCost
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems/post/responses/200/content/application~1json/examples/Órdenes/value/data/comments
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems/post/responses/200/content/application~1json/examples/Órdenes/value/data/estimates/0/partId
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}/patch/responses/200/content/application~1json/examples/Órdenes/value/message
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}/patch/responses/200/content/application~1json/examples/Órdenes/value/data
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/requestBody/content/application~1json/examples/Parte
+      a crear/value/unitPrice
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/requestBody/content/application~1json/examples/Parte
+      a crear/value/hours
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/requestBody/content/application~1json/examples/Parte
+      a crear/value/hourPrice
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/requestBody/content/application~1json/examples/Mano
+      de obra a crear/value/quantity
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/requestBody/content/application~1json/examples/Mano
+      de obra a crear/value/unitcost
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/requestBody/content/application~1json/examples/Mano
+      de obra a crear/value/availability
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/requestBody/content/application~1json/examples/Mano
+      de obra a crear/value/unitPrice
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/requestBody/content/application~1json/examples/Mano
+      de obra a crear/value/hours
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/requestBody/content/application~1json/examples/Mano
+      de obra a crear/value/hourPrice
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates/post/responses/200/content/application~1json/examples/Órdenes/value/data/0/cmosEstimateId
+    - >-
+      #/paths/~1cm~1orders~1{orderNumber}~1inspectionItems~1{inspectionItemId}~1estimates~1{estimateId}/patch/responses/200/content/application~1json/examples/Órdenes/value/data/0/cmosEstimateId
+    - >-
+      #/paths/~1cm~1phases/get/responses/200/content/application~1json/examples/Fases/value
+    - >-
+      #/paths/~1cm~1serviceAdvisors/get/responses/200/content/application~1json/examples/Asesores
+      de Servicio/value
+    - >-
+      #/paths/~1cm~1absences/get/responses/200/content/application~1json/examples/Ausencias/value
+    - >-
+      #/paths/~1cm~1users/get/responses/200/content/application~1json/examples/Usuarios/value
+    - >-
+      #/paths/~1cmos~1dashboards/get/responses/200/content/application~1json/examples/Tableros/value/data
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerFirstName
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerLastName
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerEmail
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerMobilePhoneNumber
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerLandlinePhoneNumber
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/SubTotal
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/Taxes
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/Total
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/DeclinedAt
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/ApprovedAt
+    - >-
+      #/paths/~1cm~1v1~1getNotApproved~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/Comments
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerFirstName
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerLastName
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerEmail
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerMobilePhoneNumber
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/CustomerLandlinePhoneNumber
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/SubTotal
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/Taxes
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/Total
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/DeclinedAt
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/ApprovedAt
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/0/Comments
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/1
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/1/SubTotal
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/1/Taxes
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/1/Total
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/1/DeclinedAt
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/1/ApprovedAt
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/1/Comments
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/2
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/2/SubTotal
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/2/Taxes
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/2/Total
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/2/DeclinedAt
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/2/ApprovedAt
+    - >-
+      #/paths/~1cm~1v1~1inspectionItemsList~1{vin}/get/responses/200/content/application~1json/examples/Órdenes/value/data/Items/2/Comments
+    - >-
+      #/paths/~1cm~1appointments~1{appointmentNumber}~1jobs/post/requestBody/content/application~1json/examples/Ejemplo
+      de planificación/value/jobDescriptions/0
+    - >-
+      #/paths/~1cm~1appointments~1{appointmentNumber}~1jobs/post/requestBody/content/application~1json/examples/Ejemplo
+      de planificación/value/jobDescriptions/0/appointmentReasonId
+    - >-
+      #/paths/~1cm~1appointments~1{appointmentNumber}~1jobs/post/requestBody/content/application~1json/examples/Ejemplo
+      de planificación/value/jobDescriptions/1
+    - >-
+      #/paths/~1cm~1appointments~1{appointmentNumber}~1jobs/post/requestBody/content/application~1json/examples/Ejemplo
+      de planificación/value/jobDescriptions/1/appointmentReasonId
+    - >-
+      #/paths/~1cm~1plannings/get/responses/200/content/application~1json/examples/Trabajo
+      agregado/value/message
+    - >-
+      #/paths/~1cm~1v1~1taskPriorities/get/responses/200/content/application~1json/examples/Listado
+      de prioridades de tarea/value/message
+    - >-
+      #/paths/~1cm~1v1~1taskPriorities/get/responses/200/content/application~1json/examples/Listado
+      de prioridades de tarea/value/data/0/id
+    - >-
+      #/paths/~1cm~1v1~1taskPriorities/get/responses/200/content/application~1json/examples/Listado
+      de prioridades de tarea/value/data/1/id
+    - >-
+      #/paths/~1cm~1v1~1taskPriorities/get/responses/200/content/application~1json/examples/Listado
+      de prioridades de tarea/value/data/2/id
+    - >-
+      #/paths/~1cm~1v1~1taskTypes/get/responses/200/content/application~1json/examples/Listado
+      de tipos de tarea/value/message
+    - >-
+      #/paths/~1cm~1v1~1taskTypes/get/responses/200/content/application~1json/examples/Listado
+      de tipos de tarea/value/data/0/id
+    - >-
+      #/paths/~1cm~1v1~1taskTypes/get/responses/200/content/application~1json/examples/Listado
+      de tipos de tarea/value/data/1/id
+    - >-
+      #/paths/~1cm~1v1~1taskTypes/get/responses/200/content/application~1json/examples/Listado
+      de tipos de tarea/value/data/2/id
+    - >-
+      #/paths/~1cm~1v1~1taskPurposes/get/responses/200/content/application~1json/examples/Listado
+      de propósitos de tarea/value/message
+    - >-
+      #/paths/~1cm~1v1~1taskPurposes/get/responses/200/content/application~1json/examples/Listado
+      de propósitos de tarea/value/data/0/id
+    - >-
+      #/paths/~1cm~1v1~1taskPurposes/get/responses/200/content/application~1json/examples/Listado
+      de propósitos de tarea/value/data/1/id
+    - >-
+      #/paths/~1cm~1v1~1taskPurposes/get/responses/200/content/application~1json/examples/Listado
+      de propósitos de tarea/value/data/2/id
+  operation-4xx-response:
+    - '#/paths/~1cm~1customReasons/get/responses'
+    - '#/paths/~1cm~1orders~1{orderNumber}~1payments/post/responses'
+    - '#/paths/~1cm~1vehicles~1{vehicleId}~1vehicleOwner/put/responses'
+    - '#/paths/~1cm~1vehicles~1{vehicleId}~1contacts/post/responses'
+  struct:
+    - '#/components/schemas/OrderV2ListItem/properties/orderType/nullable'
+  no-unresolved-refs:
+    - >-
+      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/schema/properties/data/properties/inspectionItems
+  no-unused-components:
+    - '#/components/parameters/RepairShopIdQuery'
+    - '#/components/parameters/UserNameQuery'
+    - '#/components/schemas/Order'
+  security-defined:
+    - '#/paths/~1cm~1scheduleAvailability/get'
+    - '#/paths/~1cm~1mobilityOptions/get'
+    - '#/paths/~1cm~1v1~1appointmentOrigins/get'
+    - '#/paths/~1cm~1orders~1{orderNumber}~1payments/post'
+    - '#/paths/~1cm~1vehicles~1{vehicleId}~1vehicleOwner/put'
+    - '#/paths/~1cm~1vehicles~1{vehicleId}~1contacts/post'
+    - '#/paths/~1cm~1vehicles~1{vehicleId}~1contacts~1{contactId}/delete'
+    - '#/paths/~1users~1login/post'

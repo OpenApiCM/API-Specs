@@ -1,0 +1,27 @@
+name: Lint OpenAPI
+
+on:
+  pull_request:
+    paths:
+      - 'DMS-Guide/**'
+      - 'Product-API/**'
+      - 'redocly.yaml'
+      - '.redocly.lint-ignore.yaml'
+      - '.github/workflows/**'
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Config: redocly.yaml (rules per API). Existing Product-API problems are baselined in
+      # .redocly.lint-ignore.yaml; any new error fails the job.
+      - name: Validar especificaciones (Redocly)
+        run: npx --yes @redocly/cli@1.34.5 lint --format=github-actions
