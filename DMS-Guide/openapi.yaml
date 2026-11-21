@@ -7053,7 +7053,7 @@ paths:
                   description: Usuario asignado a la orden.
                   type: string
                 estimateNotes:
-                  description: Notas del presupuesto.
+                  description: Notas de la cotización.
                   type: string
                 discounts:
                   description: Descuentos aplicados.
@@ -7868,7 +7868,7 @@ paths:
                   description: Usuario asignado a la orden.
                   type: string
                 estimateNotes:
-                  description: Notas del presupuesto.
+                  description: Notas de la cotización.
                   type: string
                 discounts:
                   description: Descuentos aplicados.
