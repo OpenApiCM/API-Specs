@@ -4,7 +4,7 @@ info:
   description: |-
     Paso a paso para que desarrolladores externos creen APIs que se integren fácilmente con el ecosistema de ClearMechanic, asegurando una comunicación eficiente y segura entre plataformas. / Step-by-step guide for external developers to build APIs that integrate easily with the ClearMechanic ecosystem, ensuring efficient and secure communication between platforms.
 
-    Consulta la guía de las distintas integraciones en [ClearMechanic Integration Docs](https://oaintegrationdocs.clearmechanic.com/#/es/overview). / See the guide for the different integrations at [ClearMechanic Integration Docs](https://oaintegrationdocs.clearmechanic.com/#/es/overview).
+    Consulta la guía de las distintas integraciones en [ClearMechanic Integration Docs](https://oaintegrationdocs.clearmechanic.com/#/es/overview). / See the guide for the different integrations at [ClearMechanic Integration Docs](https://oaintegrationdocs.clearmechanic.com/#/en/overview).
   version: 4.0.0
   contact:
     email: openapi@clearcheck.us
