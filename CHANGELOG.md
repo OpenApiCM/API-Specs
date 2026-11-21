@@ -30,7 +30,7 @@ Las entradas más recientes van primero. / Newest entries first.
 - **Enums:** estatus documentados como `enum` (citas, garantías, campañas, prioridad/estatus de artículos de cotización, estatus/acción de trabajos del Planeador de Taller, `approvalStatus` de Puntos de Inspección). Ejemplos ajustados a esos valores.
 - **operationId:** `postUnspectionItemsQuotes` → `postInspectionItemsQuotes`; `*EstimateByOrderId` → `*EstimateByOrderNumber`; `getOrderById` / `updateOrderById` → `getOrderByOrderNumber` / `updateOrderByOrderNumber`.
 - **Ejemplos / Examples:** valores `string` entre comillas (fechas, identificadores); fecha inválida corregida; ejemplo de `GET /operationCodes` renombrado a "Código de operación".
-- **info:** título y descripción en inglés, `license` agregada, `externalDocs` apunta a este archivo (antes un Google Doc).
+- **info:** título y descripción en inglés, `license` agregada, `externalDocs` apunta a este archivo (antes un Google Doc); la descripción enlaza a la guía de integraciones (https://oaintegrationdocs.clearmechanic.com/#/es/overview).
 
 ### 1.2.5 — 2022-02-11
 
@@ -78,4 +78,6 @@ Se agrega nuevo recurso: `PUT /orders/{orderId}`.
 
 ## Product-API
 
-_Sin entradas todavía. / No entries yet._
+### 4.0.0
+
+- **info:** la descripción enlaza a la guía de integraciones (https://oaintegrationdocs.clearmechanic.com/#/es/overview). / The description links to the integrations guide.
