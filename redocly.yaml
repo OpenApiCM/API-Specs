@@ -1,0 +1,13 @@
+# Redocly CLI configuration — used locally and by .github/workflows (lint gate before SwaggerHub publish).
+# Run: npx --yes @redocly/cli@1.34.5 lint
+extends:
+  - recommended
+
+apis:
+  dms-guide:
+    root: DMS-Guide/openapi.yaml
+    rules:
+      # Authentication between ClearMechanic and each DMS is agreed per integration; it is not part of this guide.
+      security-defined: off
+  product-api:
+    root: Product-API/openapi.yaml
