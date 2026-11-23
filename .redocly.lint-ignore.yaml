@@ -45,30 +45,6 @@ Product-API/openapi.yaml:
       #/paths/~1cm~1v2~1orders/post/requestBody/content/application~1json/examples/Orden
       por crear/value/customizableFields/5/additionalText
     - >-
-      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
-      creada/value/data/businessName
-    - >-
-      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
-      creada/value/data/documentType
-    - >-
-      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
-      creada/value/data/identificationNumber
-    - >-
-      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
-      creada/value/data/phase
-    - >-
-      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
-      creada/value/data/inCharge
-    - >-
-      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
-      creada/value/data/assignedTo
-    - >-
-      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
-      creada/value/data/notes
-    - >-
-      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/examples/Orden
-      creada/value/data/promisedDate
-    - >-
       #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/inspectionFormStatus
     - >-
       #/paths/~1cm~1v2~1orders~1{orderNumber}/get/responses/200/content/application~1json/examples/Órdenes/value/data/timeUntilFirstContactWithCustomer
@@ -282,8 +258,8 @@ Product-API/openapi.yaml:
       #/paths/~1cm~1appointments~1{appointmentNumber}~1jobs/post/requestBody/content/application~1json/examples/Ejemplo
       de planificación/value/jobDescriptions/1/appointmentReasonId
     - >-
-      #/paths/~1cm~1plannings/get/responses/200/content/application~1json/examples/Trabajo
-      agregado/value/message
+      #/paths/~1cm~1plannings/get/responses/200/content/application~1json/examples/Listado de
+      planeaciones/value/message
     - >-
       #/paths/~1cm~1v1~1taskPriorities/get/responses/200/content/application~1json/examples/Listado
       de prioridades de tarea/value/message
@@ -327,9 +303,6 @@ Product-API/openapi.yaml:
     - '#/paths/~1cm~1vehicles~1{vehicleId}~1contacts/post/responses'
   struct:
     - '#/components/schemas/OrderV2ListItem/properties/orderType/nullable'
-  no-unresolved-refs:
-    - >-
-      #/paths/~1cm~1v2~1orders/post/responses/201/content/application~1json/schema/properties/data/properties/inspectionItems
   no-unused-components:
     - '#/components/parameters/RepairShopIdQuery'
     - '#/components/parameters/UserNameQuery'
