@@ -2560,7 +2560,7 @@ paths:
         of a specific final customer.
       operationId: customerById
       description:
-        Al llamado de este recurso se deben obtener datos relacionados al cliente final de acuerdo al valor proporcionado a través del parámetro (path). / When calling this resource, the information related to the final customer specified in the path parameter will be returned.
+        Al llamado de este recurso se deben obtener datos relacionados al cliente final de acuerdo al valor proporcionado a través del parámetro (path), incluidos sus vehículos asociados en vehicles, sin duplicar los datos del cliente en cada vehículo. Si no tiene vehículos, se devuelve un arreglo vacío; OpenAPI normaliza vehicles nulo o ausente a []. / When calling this resource, the information related to the final customer specified in the path parameter will be returned, including associated vehicles in vehicles without duplicating customer data in each vehicle. If there are no vehicles, an empty array is returned; OpenAPI normalizes null or missing vehicles to [].
       parameters:
         - $ref: "#/components/parameters/OrganizationIdHeader"
         - name: customerId
@@ -2600,8 +2600,48 @@ paths:
                       street: Av. Insurgentes Sur 1234
                       taxEmail: facturacion@perezautos.com
                       zipCode: "03100"
+                      vehicles:
+                        - vehicleId: "93482"
+                          vin: 38JD930KPC0278DJ90E
+                          brand: Mazda
+                          model: Mazda 3
+                          year: "2020"
+                          licensePlate: UVV3381
+                          kilometers: "20000"
               schema:
-                $ref: "#/components/schemas/CustomerResponse"
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                    nullable: true
+                  data:
+                    allOf:
+                      - $ref: "#/components/schemas/CustomerResponse"
+                      - type: object
+                        properties:
+                          vehicles:
+                            description: Vehículos asociados al cliente final, sin duplicar sus datos. / Vehicles associated with the final customer, without duplicating customer data.
+                            type: array
+                            nullable: true
+                            items:
+                              type: object
+                              properties:
+                                vehicleId:
+                                  type: string
+                                vin:
+                                  type: string
+                                brand:
+                                  type: string
+                                model:
+                                  type: string
+                                year:
+                                  type: string
+                                licensePlate:
+                                  type: string
+                                kilometers:
+                                  type: string
         "400":
           $ref: "#/components/responses/400"
 
