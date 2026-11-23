@@ -7723,7 +7723,6 @@ components:
           type: string
           example: "03100"
       required:
-        - cmosCustomerId
         - firstName
         - mobile
         - createdAt
