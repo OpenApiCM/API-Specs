@@ -124,7 +124,7 @@ paths:
               $ref: '#/components/schemas/PostAppointmentsV2RequestBody'
       responses:
         '201':
-          description: Appointment created successfully
+          description: Cita creada exitosamente. / Appointment created successfully.
           content:
             application/json:
               schema:
@@ -269,7 +269,7 @@ paths:
                           appointments.
                         type: number
                       appointments:
-                        description: Representa los datos de la citas obtenidas. / Represents the data
+                        description: Representa los datos de las citas obtenidas. / Represents the data
                           of the retrieved appointments.
                         type: array
                         items:
@@ -318,7 +318,7 @@ paths:
                               description: Modelo del vehículo. / Vehicle model.
                               type: string
                             brand:
-                              description: Marca del vehículo. / Vehicle brand(make)
+                              description: Marca del vehículo. / Vehicle brand (make)
                               type: string
                             year:
                               description: Año del vehículo. / Vehicle year.
@@ -389,7 +389,7 @@ paths:
                                 Repair Order number.
                               type: number
                             withValetService:
-                              description: Indica si la cita tendrá servicio de valet.
+                              description: Indica si la cita tendrá servicio de valet. / Indicates whether the appointment includes valet service.
                               type: boolean
                             appointmentReasons:
                               description: Arreglo con los motivos de la cita. / Array with the appointment
@@ -499,7 +499,7 @@ paths:
                     observations or comments.
                   type: string
                 withValetService:
-                  description: Indica si la cita tendrá servicio de valet.
+                  description: Indica si la cita tendrá servicio de valet. / Indicates whether the appointment includes valet service.
                   type: boolean
                 serviceAdvisorId:
                   description: Identificador de ClearMechanic del Asesor de Servicio que atenderá
@@ -534,7 +534,7 @@ paths:
                         type: string
                         format: GUID
                       details:
-                        description: Detalles del motivo de visita personalizable. / Appointment customizable visit reason derails
+                        description: Detalles del motivo de visita personalizable. / Appointment customizable visit reason details
                         type: object
                         properties:
                           detailId:
@@ -927,7 +927,7 @@ paths:
               format: GUID
       responses:
         '200':
-          description: Successful operation
+          description: Solicitud completada de forma satisfactoria. / Successful request.
           content:
             application/json:
               schema:
@@ -1198,7 +1198,7 @@ paths:
                   format: "[0-9]*10"
                 brand:
                   description: Marca del vehículo relacionado con la Orden de Reparación. /
-                    Vehicle brand(make)
+                    Vehicle brand (make)
                   type: string
                 model:
                   description: Modelo del vehículo relacionado con la Orden de Reparación. /
@@ -1322,7 +1322,7 @@ paths:
                           a la aprobación del cliente final. Los estatus
                           disponibles son 'Pending', 'Approved' y 'Rejected' /
                           Status of the inspection item regarding the client
-                          decision, the posible statuses are: 'Pending',
+                          decision, the possible statuses are: 'Pending',
                           'Approved', 'Rejected'"
                         type: string
                         example: Approved Rejected Pending
@@ -1538,9 +1538,16 @@ paths:
                 Orden creada:
                   value:
                     success: true
-                    message: Order created successfully.
+                    message: null
                     data:
-                      orderId: 1ABC1-0912-AK123
+                      orderId: 61210
+                      repairShopId: 1804
+                      appointmentNumber: null
+                      assignedToUserId: null
+                      inChargeUserId: null
+                      uploadedByUserId: 6342
+                      cmosAppointmentId: null
+                      repairOrderKey: a42df801-9c56-478f-a200-6a3249fb86b1
                       orderNumber: "101920201716"
                       firstName: Teresa de Jesús
                       lastName: Shen
@@ -1549,52 +1556,40 @@ paths:
                       mainPhone: "3314156263"
                       brand: Honda
                       model: Civic
-                      year: "2019"
-                      kilometers: "12500"
+                      kilometers: 12500
                       vin: 12345ABCDE12FR45H
+                      year: 2019
                       licensePlate: abc1234
+                      notes: ""
+                      inspectionFormStatus: UploadedFromOpenAPI
+                      uploadTime: "2026-11-23T18:19:02.857488Z"
+                      trimLevel: null
+                      manufacturedIn: null
+                      bodyStyle: null
+                      engineType: null
+                      antiBrakeSystem: null
+                      driveLine: null
+                      steeringType: null
+                      transmission: null
+                      orderNotes: null
+                      additionalStatus: null
+                      lastUpdatedTime: "2026-11-23T18:19:02.857488Z"
+                      orderType:
+                        id: fc464b62-857a-42b2-8b80-fb0a08303adc
+                        name: Publico
+                      userDmsIdNumber: null
                       towerNumber: "012"
-                      utsSold: "30.5"
-                      orderType: Warranty
-                      status: Invoiced
-                      total: 5000
-                      serviceType: Maintenance
-                      creationDate: 2022-10-15T18:05:00.000Z
-                      businessName: ClearMechanic
-                      documentType: Passport
-                      identificationNumber: "123456789"
-                      phase: Inspection
-                      inCharge: John Doe
-                      assignedTo: Jane Doe
-                      notes: Please check the brakes system.
-                      promisedDate: 2023-10-20T17:30:00Z
-                      inspectionItems:
-                        - inspectionItemName: Brakes system.
-                          cmosInspectionItemId: "192849128"
-                          externalInspectionItemId: "192835182"
-                          quantity: 1
-                          partUnitPrice: 500
-                          availability: 20
-                          laborHours: 1
-                          laborHourPrice: 200
-                          comments: null
-                          approvalStatus: Pending
-                          jobs: null
-                          parts:
-                            - partName: Rear brake pads
-                              partId: "159753"
-                              quantity: 2
-                              partUnitPrice: 1000
-                              availability: 20
-                              laborHours: 2
-                              laborHourPrice: 500
-                              comments: Alcon brake pads.
-                          labors:
-                            - laborName: Brake pads change labor.
-                              laborId: "753159"
-                              laborHours: 0.5
-                              laborHourPrice: 500
-                              comments: Brake pads change.
+                      utsSold: ""
+                      dmsPromisedDate: null
+                      dmsAdditionalData: null
+                      dmsInvoice: null
+                      dmsAppointmentNumber: null
+                      dmsRoType: null
+                      dmsStatus: null
+                      dmsTotal: null
+                      dmsServiceType: null
+                      dmsTot: null
+                      visitReasons: []
               schema:
                 type: object
                 required:
@@ -1620,13 +1615,36 @@ paths:
                     type: object
                     properties:
                       orderId:
-                        description: Identificador único de la Orden de Reparación en la base de datos
-                          de ClearMechanic. / Repair Order unique identifier
-                          in ClearMechanic's database.
+                        description: Identificador único de la Orden de Reparación en la base de datos de ClearMechanic. / Repair Order unique identifier in ClearMechanic's database.
+                        type: integer
+                      repairShopId:
+                        description: Identificador del taller o agencia en ClearMechanic. / Workshop or dealership identifier in ClearMechanic.
+                        type: integer
+                      appointmentNumber:
+                        description: Número de cita asociada a la Orden de Reparación. / Appointment number associated with the Repair Order.
                         type: string
+                        nullable: true
+                      assignedToUserId:
+                        description: Identificador del usuario al que está asignada la Orden de Reparación. / Identifier of the user the Repair Order is assigned to.
+                        type: integer
+                        nullable: true
+                      inChargeUserId:
+                        description: Identificador del usuario a cargo de la Orden de Reparación. / Identifier of the user in charge of the Repair Order.
+                        type: integer
+                        nullable: true
+                      uploadedByUserId:
+                        description: Identificador del usuario que subió la Orden de Reparación a ClearMechanic. / Identifier of the user that uploaded the Repair Order to ClearMechanic.
+                        type: integer
+                      cmosAppointmentId:
+                        description: Identificador único de la cita de ClearMechanic asociada a la Orden de Reparación. / Unique identifier of the ClearMechanic appointment associated with the Repair Order.
+                        type: string
+                        nullable: true
+                      repairOrderKey:
+                        description: Clave única (GUID) de la Orden de Reparación. / Unique key (GUID) of the Repair Order.
+                        type: string
+                        format: uuid
                       orderNumber:
-                        description: Número de Orden de Reparación en ClearMechanic. / Order number on
-                          ClearMechanic.
+                        description: Número de Orden de Reparación en ClearMechanic. / Order number on ClearMechanic.
                         type: string
                       firstName:
                         description: Nombre del cliente final. / Final customer name.
@@ -1637,74 +1655,160 @@ paths:
                       email:
                         description: Correo electrónico del cliente final. / Final customer email.
                         type: string
-                        format: "*@*.*"
                       mobile:
-                        description: Teléfono celular del cliente final. / Final customer mobile
-                          phone.
+                        description: Teléfono celular del cliente final. / Final customer mobile phone.
                         type: string
-                        format: "[0-9]*10"
                       mainPhone:
-                        description: Teléfono fijo del cliente final. / Final customer landline
+                        description: Teléfono fijo del cliente final. / Final customer landline.
                         type: string
-                        format: "[0-9]*10"
                       brand:
-                        description: Marca del vehículo relacionado con la Orden de Reparación. /
-                          Vehicle brand(make)
+                        description: Marca del vehículo relacionado con la Orden de Reparación. / Vehicle brand (make).
                         type: string
                       model:
-                        description: Modelo del vehículo relacionado con la Orden de Reparación. /
-                          Vehicle model.
-                        type: string
-                      year:
-                        description: Año del vehículo relacionado con la Orden de Reparación. /
-                          Vehicle year.
+                        description: Modelo del vehículo relacionado con la Orden de Reparación. / Vehicle model.
                         type: string
                       kilometers:
                         description: Kilometraje del vehículo. / Vehicle mileage.
-                        type: string
+                        type: integer
                       vin:
-                        description: Número de identificación del Vehículo. / Vehicle identification
-                          number.
+                        description: Número de identificación del vehículo. / Vehicle identification number.
                         type: string
-                        format: "[A-Z, 0-9]*17"
+                      year:
+                        description: Año del vehículo relacionado con la Orden de Reparación. / Vehicle year.
+                        type: integer
                       licensePlate:
-                        description: Placas del vehículo relacionado con la Orden de Reparación. /
-                          Vehicle license plates.
+                        description: Placas del vehículo relacionado con la Orden de Reparación. / Vehicle license plates.
                         type: string
+                      notes:
+                        description: Notas adicionales relacionadas con la Orden de Reparación. / Additional notes related to the Repair Order.
+                        type: string
+                        nullable: true
+                      inspectionFormStatus:
+                        description: Estatus de la forma de inspección. / Inspection form status.
+                        type: string
+                      uploadTime:
+                        description: Fecha y hora en la que se subió la Orden de Reparación (UTC). / Date and time the Repair Order was uploaded (UTC).
+                        type: string
+                        format: date-time
+                      trimLevel:
+                        description: Nivel de acabado del vehículo. / Vehicle trim level.
+                        type: string
+                        nullable: true
+                      manufacturedIn:
+                        description: Lugar donde se manufacturó el vehículo. / Place where the vehicle was manufactured.
+                        type: string
+                        nullable: true
+                      bodyStyle:
+                        description: Tipo de carrocería del vehículo. / Vehicle body type.
+                        type: string
+                        nullable: true
+                      engineType:
+                        description: Tipo del motor del vehículo. / Vehicle engine type.
+                        type: string
+                        nullable: true
+                      antiBrakeSystem:
+                        description: Indica si el vehículo cuenta con ABS. / Indicates whether the vehicle has ABS.
+                        type: boolean
+                        nullable: true
+                      driveLine:
+                        description: Tipo de sistema de transmisión del vehículo. / Vehicle driveline type.
+                        type: string
+                        nullable: true
+                      steeringType:
+                        description: Tipo de dirección del vehículo. / Vehicle steering type.
+                        type: string
+                        nullable: true
+                      transmission:
+                        description: Tipo de transmisión del vehículo. / Vehicle transmission type.
+                        type: string
+                        nullable: true
+                      orderNotes:
+                        description: Notas de la Orden de Reparación. / Repair Order notes.
+                        type: string
+                        nullable: true
+                      additionalStatus:
+                        description: Estatus adicional que describe la Orden de Reparación. / Additional status that describes the Repair Order.
+                        type: string
+                        nullable: true
+                      lastUpdatedTime:
+                        description: Fecha y hora de la última actualización de la Orden de Reparación (UTC). / Date and time the Repair Order was last updated (UTC).
+                        type: string
+                        format: date-time
+                      orderType:
+                        description: Tipo de Orden de Reparación. / Repair Order type.
+                        type: object
+                        nullable: true
+                        properties:
+                          id:
+                            description: Identificador único del tipo de orden. / Order type unique identifier.
+                            type: string
+                            format: uuid
+                          name:
+                            description: Nombre del tipo de orden. / Order type name.
+                            type: string
+                      userDmsIdNumber:
+                        description: Identificador del usuario en el DMS. / User ID in the DMS.
+                        type: string
+                        nullable: true
                       towerNumber:
-                        description: Número del cono u objeto puesto sobre cada vehículo en el que se
-                          trabaja. / Cone number assigned to the vehicle in the
-                          workshop.
+                        description: Número del cono u objeto puesto sobre cada vehículo en el que se trabaja. / Cone number assigned to the vehicle in the workshop.
                         type: string
+                        nullable: true
                       utsSold:
                         description: Unidades de tiempo vendidas (UTS). / Unit time sold.
                         type: string
-                      orderType:
-                        description: Tipo de Orden de Reparación. / Repair Order type.
+                        nullable: true
+                      dmsPromisedDate:
+                        description: Fecha y hora promesa de entrega del vehículo en el DMS. / Delivery promised date and time in the DMS.
                         type: string
-                        example: Garantía
-                      status:
-                        description: Estatus de la Orden de Reparación. / Repair Order status.
+                        nullable: true
+                      dmsAdditionalData:
+                        description: Información adicional del DMS. / DMS additional info.
                         type: string
-                        example: Abierta, Cerrada, Facturada
-                      total:
-                        description: La factura total de la Orden de Reparación, es decir, el costo
-                          total del servicio que será pagado por el cliente
-                          final. / Total amount to be invoiced.
+                        nullable: true
+                      dmsInvoice:
+                        description: Cantidad a facturar en el DMS. / DMS amount that will be invoiced.
                         type: number
-                      serviceType:
-                        description: Describe el tipo de servicio en la Orden de Reparación. / Repair
-                          Order service type.
+                        nullable: true
+                      dmsAppointmentNumber:
+                        description: Identificador único de la cita en el DMS asociada a la Orden de Reparación. / Unique identifier of the DMS appointment associated with the Repair Order.
                         type: string
-                        example: Mantenimiento
-                      creationDate:
-                        description: Fecha y hora de creación de la Orden de Reparación. / Date and time
-                          the Repair Order was created.
+                        nullable: true
+                      dmsRoType:
+                        description: Tipo de Orden de Reparación en el DMS. / DMS Repair Order type.
                         type: string
-                        format: yyyy-MM-ddThh:mm:ss.000Z
-                      inspectionItems:
-                        $ref: "#/paths/~1cm~1orders/post/requestBody/content/application~1json/schema/p
-                          roperties/inspectionItems"
+                        nullable: true
+                      dmsStatus:
+                        description: Estatus de la Orden de Reparación en el DMS. / DMS Repair Order status.
+                        type: string
+                        nullable: true
+                      dmsTotal:
+                        description: Total a pagar en el DMS. / Total amount to pay on the DMS.
+                        type: number
+                        nullable: true
+                      dmsServiceType:
+                        description: Tipo de servicio de la Orden de Reparación en el DMS. / DMS Repair Order service type.
+                        type: string
+                        nullable: true
+                      dmsTot:
+                        description: Total a pagar de trabajos fuera de taller del DMS. / Total amount to pay for sublet work in the DMS.
+                        type: string
+                        nullable: true
+                      visitReasons:
+                        description: Razones de visita de la Orden de Reparación. / Repair Order visit reasons.
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            visitReasonId:
+                              description: Identificador único de la razón de visita. / Visit reason unique identifier.
+                              type: string
+                            visitReason:
+                              description: Razón de visita. / Visit reason.
+                              type: string
+                            isFromCustomer:
+                              description: Indica si la razón de visita fue indicada por el cliente. / Indicates whether the visit reason was given by the customer.
+                              type: boolean
         "400":
           $ref: '#/components/responses/400'
         "500":
@@ -1819,7 +1923,7 @@ paths:
                   example: NA, Cash, CreditOrDebitCard, Check, WireTransfer              
                 brand:
                   description: Marca del vehículo relacionado con la Orden de Reparación. /
-                    Vehicle brand(make)
+                    Vehicle brand (make)
                   type: string
                 model:
                   description: Modelo del vehículo relacionado con la Orden de Reparación. /
@@ -2032,7 +2136,7 @@ paths:
                           format: "[0-9]*10"
                         brand:
                           description: Marca del vehículo relacionado con la Orden de Reparación. /
-                            Vehicle brand(make)
+                            Vehicle brand (make)
                           type: string
                         model:
                           description: Modelo del vehículo relacionado con la Orden de Reparación. /
@@ -2775,14 +2879,14 @@ paths:
                   visitReasons:
                     - visitReason: "Ruido al frenar."
             schema:
-              description: Representa el detalle del motivo de visita a crear en la OR.
+              description: Representa el detalle del motivo de visita a crear en la OR. / Visit reason to create in the RO.
               type: object
               required:
                 - visitReasons
               properties:
                 visitReasons:
                   type: array
-                  description: Razones de visita a agregar.
+                  description: Razones de visita a agregar. / Visit reasons to add.
                   items: 
                     type: object
                     required:
@@ -2820,16 +2924,16 @@ paths:
                   message:
                     description: Proporciona una pequeña descripción cuando ocurre un error al
                       llamado del recurso, por lo regular el valor de este
-                      parámetro es nulo si no ocurre algún error.
+                      parámetro es nulo si no ocurre algún error. / Short description when an error occurs while calling the resource; usually null when there is no error.
                     type: string
                     nullable: true
                   data:
-                    description: Representa el detalle del punto de inspección creado en la OR.
+                    description: Representa el detalle del punto de inspección creado en la OR. / Inspection item created in the RO.
                     type: object
                     properties:
                       visitReasons:
                         type: array
-                        description: Razones de visita a agregar.
+                        description: Razones de visita a agregar. / Visit reasons to add.
                         items: 
                           type: object
                           required:
@@ -2911,7 +3015,7 @@ paths:
                         - comment 1
                         - comment 2
             schema:
-              description: Representa el detalle del punto de inspección a crear en la OR.
+              description: Representa el detalle del punto de inspección a crear en la OR. / Inspection item to create in the RO.
               type: object
               required:
                 - inspectionItemName
@@ -3042,11 +3146,11 @@ paths:
                   message:
                     description: Proporciona una pequeña descripción cuando ocurre un error al
                       llamado del recurso, por lo regular el valor de este
-                      parámetro es nulo si no ocurre algún error.
+                      parámetro es nulo si no ocurre algún error. / Short description when an error occurs while calling the resource; usually null when there is no error.
                     type: string
                     nullable: true
                   data:
-                    description: Representa el detalle del punto de inspección creado en la OR.
+                    description: Representa el detalle del punto de inspección creado en la OR. / Inspection item created in the RO.
                     type: object
                     required:
                       - inspectionItemName
@@ -3074,10 +3178,10 @@ paths:
                         description: Disponibilidad del artículo. / Inspection item availability
                       Hours:
                         type: integer
-                        description: Horas necesarias para la inspección. / Inspection item hours.
+                        description: Horas de mano de obra. / Labor hours.
                       HourPrice:
                         type: number
-                        description: Precio por hora de la inspección. / Inspection item hourly price
+                        description: Precio por hora de mano de obra. / Labor hourly price.
                       comments:
                         type: array
                         description: Comentarios adicionales. / Inspection item additional comments.
@@ -3180,7 +3284,7 @@ paths:
                   message:
                     description: Proporciona una pequeña descripción cuando ocurre un error al
                       llamado del recurso, por lo regular el valor de este
-                      parámetro es nulo si no ocurre algún error.
+                      parámetro es nulo si no ocurre algún error. / Short description when an error occurs while calling the resource; usually null when there is no error.
                     type: string
                     nullable: true
                   data:
@@ -3232,57 +3336,57 @@ paths:
                   isVisible: true
             schema:
               description: Representa el detalle del punto de inspección a actualizar en la
-                OR.
+                OR. / Inspection item to update in the RO.
               type: object
               properties:
                 inspectionItemName:
                   type: string
-                  description: Nombre del punto de inspección.
+                  description: Nombre del punto de inspección. / Inspection item name.
                   example: Brakes system.
                 externalInspectionItemId:
                   type: string
-                  description: ID externo del punto de inspección.
+                  description: ID externo del punto de inspección. / Inspection item external ID.
                   example: "192835182"
                 quantity:
                   type: integer
-                  description: Cantidad del artículo.
+                  description: Cantidad del artículo. / Item quantity.
                   example: 1
                 unitcost:
                   type: number
-                  description: Costo unitario del artículo.
+                  description: Costo unitario del artículo. / Item unit cost.
                   example: 50.3
                 UnitPrice:
                   type: number
-                  description: Precio unitario del artículo.
+                  description: Precio unitario del artículo. / Item unit price.
                   example: 500
                 availability:
                   type: integer
-                  description: Disponibilidad del artículo.
+                  description: Disponibilidad del artículo. / Item availability.
                   example: 20
                 Hours:
                   type: integer
-                  description: Horas de mano de obra.
+                  description: Horas de mano de obra. / Labor hours.
                   example: 1
                 HourPrice:
                   type: number
-                  description: Precio por hora de mano de obra.
+                  description: Precio por hora de mano de obra. / Labor hourly price.
                   example: 200
                 comments:
                   type: array
-                  description: Comentarios adicionales.
+                  description: Comentarios adicionales. / Additional comments.
                   items: 
                     type: string
                 priority:
                   type: string
-                  description: Prioridad del punto de inspección (por ejemplo, "Urgent", "Med", "Low", "NA").
+                  description: "Prioridad del punto de inspección (por ejemplo, \"Urgent\", \"Med\", \"Low\", \"NA\"). / Inspection item priority (e.g. \"Urgent\", \"Med\", \"Low\", \"NA\")."
                   example: High
                 approvalStatus:
                   type: string
-                  description: Estado de aprobación del punto de inspección.
+                  description: Estado de aprobación del punto de inspección. / Inspection item approval status.
                   example: Pending
                 isVisible:
                   type: boolean
-                  description: Indica si el punto de inspección es visible en la cotización enviada al cliente final.
+                  description: Indica si el punto de inspección es visible en la cotización enviada al cliente final. / Indicates whether the inspection item is visible in the estimate sent to the final customer.
                   example: true
       responses:
         "200":
@@ -3328,11 +3432,11 @@ paths:
                 properties:
                   success:
                     type: boolean
-                    description: Indica si la operación fue exitosa.
+                    description: Indica si la operación fue exitosa. / Indicates if the operation was successful.
                     example: true
                   message:
                     type: string
-                    description: Mensaje descriptivo de la operación.
+                    description: Mensaje descriptivo de la operación. / Operation descriptive message.
                     example: Mensaje de error de CM indicando que el punto de inspección no fue
                       modificado
                   data:
@@ -3342,56 +3446,56 @@ paths:
                       properties:
                         inspectionItemName:
                           type: string
-                          description: Nombre del elemento de inspección.
+                          description: Nombre del punto de inspección. / Inspection item name.
                           example: Brakes system.
                         cmosInspectionItemId:
                           type: integer
-                          description: ID interno del elemento de inspección.
+                          description: ID interno del punto de inspección. / Inspection item internal ID.
                           example: 55336688
                         externalInspectionItemId:
                           type: string
-                          description: ID externo del elemento de inspección.
+                          description: ID externo del punto de inspección. / Inspection item external ID.
                           example: "192835182"
                         quantity:
                           type: integer
-                          description: Cantidad del elemento.
+                          description: Cantidad del artículo. / Item quantity.
                           example: 1
                         unitcost:
                           type: number
-                          description: Costo unitario del elemento.
+                          description: Costo unitario del artículo. / Item unit cost.
                           example: 50.3
                         UnitPrice:
                           type: number
-                          description: Precio unitario del elemento.
+                          description: Precio unitario del artículo. / Item unit price.
                           example: 500
                         availability:
                           type: integer
-                          description: Disponibilidad del elemento.
+                          description: Disponibilidad del artículo. / Item availability.
                           example: 20
                         Hours:
                           type: integer
-                          description: Horas necesarias para la inspección.
+                          description: Horas de mano de obra. / Labor hours.
                           example: 1
                         HourPrice:
                           type: number
-                          description: Precio por hora de la inspección.
+                          description: Precio por hora de mano de obra. / Labor hourly price.
                           example: 200
                         comments:
                           type: array
-                          description: Comentarios adicionales.
+                          description: Comentarios adicionales. / Additional comments.
                           items: 
                             type: string
                         priority:
                           type: string
-                          description: Prioridad del elemento (por ejemplo, "Urgent", "Med", "Low", "NA").
+                          description: "Prioridad del punto de inspección (por ejemplo, \"Urgent\", \"Med\", \"Low\", \"NA\"). / Inspection item priority (e.g. \"Urgent\", \"Med\", \"Low\", \"NA\")."
                           example: High
                         approvalStatus:
                           type: string
-                          description: Estado de aprobación del elemento.
+                          description: Estado de aprobación del punto de inspección. / Inspection item approval status.
                           example: Pending
                         isVisible:
                           type: boolean
-                          description: Indica si el elemento es visible.
+                          description: Indica si el punto de inspección es visible en la cotización enviada al cliente final. / Indicates whether the inspection item is visible in the estimate sent to the final customer.
                           example: true
                         estimates:
                           type: array
@@ -3400,45 +3504,45 @@ paths:
                             properties:
                               estimateName:
                                 type: string
-                                description: Nombre del estimado.
+                                description: Nombre de la parte o mano de obra. / Part or labor name.
                                 example: Rear brake pads
                               partId:
                                 type: string
-                                description: ID de la parte asociada al estimado.
+                                description: ID de la parte asociada a la parte o mano de obra. / ID of the part or labor.
                                 example: "159753"
                               cmosEstimateId:
                                 type: integer
-                                description: ID interno del estimado.
+                                description: ID interno de la parte o mano de obra. / Part or labor internal ID.
                                 example: 555955
                               quantity:
                                 type: integer
-                                description: Cantidad del estimado.
+                                description: Cantidad de la parte o mano de obra. / Part or labor quantity.
                                 example: 2
                               unitcost:
                                 type: number
-                                description: Costo unitario del estimado.
+                                description: Costo unitario de la parte o mano de obra. / Part or labor unit cost.
                                 example: 50.3
                               UnitPrice:
                                 type: number
-                                description: Precio unitario del estimado.
+                                description: Precio unitario de la parte o mano de obra. / Part or labor unit price.
                                 example: 100
                               availability:
                                 type: integer
-                                description: Disponibilidad del estimado.
+                                description: Disponibilidad de la parte o mano de obra. / Part or labor availability.
                                 example: 20
                               Hours:
                                 type: integer
-                                description: Horas necesarias para el estimado.
+                                description: Horas de mano de obra. / Labor hours.
                                 example: 2
                               HourPrice:
                                 type: number
-                                description: Precio por hora del estimado.
+                                description: Precio por hora de mano de obra. / Labor hourly price.
                                 example: 500
                               comments:
                                 type: array
                                 items:
                                   type: string
-                                  description: Comentarios adicionales del estimado.
+                                  description: Comentarios adicionales de la parte o mano de obra. / Part or labor additional comments.
                                   example:
                                     - comentt 1
                                     - comment2
@@ -3497,48 +3601,48 @@ paths:
                     - comnent 1
                     - comment 2
             schema:
-              description: Representa el detalle de la parte o mano de obra creada.
+              description: Representa el detalle de la parte o mano de obra a crear. / Part or labor to create.
               type: object
               required:
                 - estimateName
               properties:
                 estimateName:
                   type: string
-                  description: Nombre del estimado.
+                  description: Nombre de la parte o mano de obra. / Part or labor name.
                   example: Rear brake pads
                 partId:
                   type: string
-                  description: ID de la parte asociada al estimado.
+                  description: ID de la parte asociada a la parte o mano de obra. / ID of the part or labor.
                   example: "159753"
                 quantity:
                   type: integer
-                  description: Cantidad del estimado.
+                  description: Cantidad de la parte o mano de obra. / Part or labor quantity.
                   example: 2
                 unitcost:
                   type: number
-                  description: Costo unitario del estimado.
+                  description: Costo unitario de la parte o mano de obra. / Part or labor unit cost.
                   example: 50.3
                 UnitPrice:
                   type: number
-                  description: Precio unitario del estimado.
+                  description: Precio unitario de la parte o mano de obra. / Part or labor unit price.
                   example: 100
                 availability:
                   type: integer
-                  description: Disponibilidad del estimado.
+                  description: Disponibilidad de la parte o mano de obra. / Part or labor availability.
                   example: 20
                 Hours:
                   type: integer
-                  description: Horas necesarias para el estimado.
+                  description: Horas de mano de obra. / Labor hours.
                   example: 2
                 HourPrice:
                   type: number
-                  description: Precio por hora del estimado.
+                  description: Precio por hora de mano de obra. / Labor hourly price.
                   example: 500
                 comments:
                   type: array
                   items:
                     type: string
-                  description: Comentarios adicionales del estimado.
+                  description: Comentarios adicionales de la parte o mano de obra. / Part or labor additional comments.
                   example:
                     - comentt 1
                     - comment2
@@ -3575,11 +3679,11 @@ paths:
                 properties:
                   success:
                     type: boolean
-                    description: Indica si la operación fue exitosa.
+                    description: Indica si la operación fue exitosa. / Indicates if the operation was successful.
                     example: true
                   message:
                     type: string
-                    description: Mensaje descriptivo de la operación.
+                    description: Mensaje descriptivo de la operación. / Operation descriptive message.
                     example: Mensaje de error de CM indicando que el estimate fue creado
                   data:
                     type: array
@@ -3588,45 +3692,45 @@ paths:
                       properties:
                         estimateName:
                           type: string
-                          description: Nombre del estimado.
+                          description: Nombre de la parte o mano de obra. / Part or labor name.
                           example: Rear brake pads
                         partId:
                           type: string
-                          description: ID de la parte asociada al estimado.
+                          description: ID de la parte asociada a la parte o mano de obra. / ID of the part or labor.
                           example: "159753"
                         cmosEstimateId:
                           type: integer
-                          description: ID interno del estimado en CM.
+                          description: ID interno de la parte o mano de obra en ClearMechanic. / Part or labor internal ID in ClearMechanic.
                           example: 40f6de37-5b3d-4f2d-87c3-8d8a8f69218b
                         quantity:
                           type: integer
-                          description: Cantidad del estimado.
+                          description: Cantidad de la parte o mano de obra. / Part or labor quantity.
                           example: 2
                         unitcost:
                           type: number
-                          description: Costo unitario del estimado.
+                          description: Costo unitario de la parte o mano de obra. / Part or labor unit cost.
                           example: 50.3
                         UnitPrice:
                           type: number
-                          description: Precio unitario del estimado.
+                          description: Precio unitario de la parte o mano de obra. / Part or labor unit price.
                           example: 100
                         availability:
                           type: integer
-                          description: Disponibilidad del estimado.
+                          description: Disponibilidad de la parte o mano de obra. / Part or labor availability.
                           example: 20
                         Hours:
                           type: integer
-                          description: Horas necesarias para el estimado.
+                          description: Horas de mano de obra. / Labor hours.
                           example: 2
                         HourPrice:
                           type: number
-                          description: Precio por hora del estimado.
+                          description: Precio por hora de mano de obra. / Labor hourly price.
                           example: 500
                         comments:
                           type: array
                           items:
                             type: string
-                          description: Comentarios adicionales del estimado.
+                          description: Comentarios adicionales de la parte o mano de obra. / Part or labor additional comments.
                           example:
                             - comentt 1
                             - comment2
@@ -3675,48 +3779,48 @@ paths:
                     - comentt 1
                     - comment2
             schema:
-              description: Representa el detalle del punto de inspección a crear en la OR.
+              description: Representa el detalle del punto de inspección a crear en la OR. / Inspection item to create in the RO.
               type: object
               required:
                 - estimateName
               properties:
                 estimateName:
                   type: string
-                  description: Nombre del estimado.
+                  description: Nombre de la parte o mano de obra. / Part or labor name.
                   example: Rear brake pads
                 partId:
                   type: string
-                  description: ID de la parte asociada al estimado.
+                  description: ID de la parte asociada a la parte o mano de obra. / ID of the part or labor.
                   example: "159753"
                 quantity:
                   type: integer
-                  description: Cantidad del estimado.
+                  description: Cantidad de la parte o mano de obra. / Part or labor quantity.
                   example: 2
                 unitcost:
                   type: number
-                  description: Costo unitario del estimado.
+                  description: Costo unitario de la parte o mano de obra. / Part or labor unit cost.
                   example: 50.3
                 UnitPrice:
                   type: number
-                  description: Precio unitario del estimado.
+                  description: Precio unitario de la parte o mano de obra. / Part or labor unit price.
                   example: 100
                 availability:
                   type: integer
-                  description: Disponibilidad del estimado.
+                  description: Disponibilidad de la parte o mano de obra. / Part or labor availability.
                   example: 20
                 Hours:
                   type: integer
-                  description: Horas necesarias para el estimado.
+                  description: Horas de mano de obra. / Labor hours.
                   example: 2
                 HourPrice:
                   type: number
-                  description: Precio por hora del estimado.
+                  description: Precio por hora de mano de obra. / Labor hourly price.
                   example: 500
                 comments:
                   type: array
                   items:
                     type: string
-                  description: Comentarios adicionales del estimado.
+                  description: Comentarios adicionales de la parte o mano de obra. / Part or labor additional comments.
                   example:
                     - comentt 1
                     - comment2
@@ -3752,11 +3856,11 @@ paths:
                 properties:
                   success:
                     type: boolean
-                    description: Indica si la operación fue exitosa.
+                    description: Indica si la operación fue exitosa. / Indicates if the operation was successful.
                     example: true
                   message:
                     type: string
-                    description: Mensaje descriptivo de la operación.
+                    description: Mensaje descriptivo de la operación. / Operation descriptive message.
                     example: Mensaje de error de CM indicando que la parte o mano de obra no fue
                       creado
                   data:
@@ -3766,45 +3870,45 @@ paths:
                       properties:
                         estimateName:
                           type: string
-                          description: Nombre del estimado.
+                          description: Nombre de la parte o mano de obra. / Part or labor name.
                           example: Rear brake pads
                         partId:
                           type: string
-                          description: ID de la parte asociada al estimado.
+                          description: ID de la parte asociada a la parte o mano de obra. / ID of the part or labor.
                           example: "159753"
                         cmosEstimateId:
                           type: integer
-                          description: ID interno del estimado en CM.
+                          description: ID interno de la parte o mano de obra en ClearMechanic. / Part or labor internal ID in ClearMechanic.
                           example: 40f6de37-5b3d-4f2d-87c3-8d8a8f69218b
                         quantity:
                           type: integer
-                          description: Cantidad del estimado.
+                          description: Cantidad de la parte o mano de obra. / Part or labor quantity.
                           example: 2
                         unitcost:
                           type: number
-                          description: Costo unitario del estimado.
+                          description: Costo unitario de la parte o mano de obra. / Part or labor unit cost.
                           example: 50.3
                         UnitPrice:
                           type: number
-                          description: Precio unitario del estimado.
+                          description: Precio unitario de la parte o mano de obra. / Part or labor unit price.
                           example: 100
                         availability:
                           type: integer
-                          description: Disponibilidad del estimado.
+                          description: Disponibilidad de la parte o mano de obra. / Part or labor availability.
                           example: 20
                         Hours:
                           type: integer
-                          description: Horas necesarias para el estimado.
+                          description: Horas de mano de obra. / Labor hours.
                           example: 2
                         HourPrice:
                           type: number
-                          description: Precio por hora del estimado.
+                          description: Precio por hora de mano de obra. / Labor hourly price.
                           example: 500
                         comments:
                           type: array
                           items:
                             type: string
-                          description: Comentarios adicionales del estimado.
+                          description: Comentarios adicionales de la parte o mano de obra. / Part or labor additional comments.
                           example:
                             - comentt 1
                             - comment2
@@ -4707,7 +4811,7 @@ paths:
                   description: Placas del vehículo. / Vehicle license plates.
                   type: string
                 brand:
-                  description: Marca del vehículo. / Vehicle brand(make)
+                  description: Marca del vehículo. / Vehicle brand (make)
                   type: string
                 model:
                   description: Modelo del vehículo. / Vehicle model.
@@ -6205,7 +6309,7 @@ paths:
         the key metrics of the ClearMechanic dashboard.
       operationId: getCmDashboards
       description: Regresa un listado de indicadores clave del tablero de
-        ClearMechanic. / Returns a of list key metrics of the ClearMechanic
+        ClearMechanic. / Returns a list of key metrics of the ClearMechanic
         dashboard.
       security:
         - Authorization: []
@@ -6346,18 +6450,18 @@ paths:
                           created without an appointment in a dashboard.
                         type: number
                       totalApprovedEstimate:
-                        description: Cantidad total($) de lo que fue aprobado en todas las ORs creadas
+                        description: Cantidad total ($) de lo que fue aprobado en todas las ORs creadas
                           en un tablero. / Total amount($) of what was approved
                           in all ORs in a dashboard.
                         type: number
                       ordersWithoutAppointmentApprovedEstimate:
-                        description: Cantidad total($) de lo que fue aprobado en todas las ORs creadas
+                        description: Cantidad total ($) de lo que fue aprobado en todas las ORs creadas
                           sin una cita en un tablero. / Total amount($) of what
                           was approved in all ORs without an appointment in a
                           dashboard.
                         type: number
                       ordersWithAppointmentApprovedEstimate:
-                        description: Cantidad total($) de lo que fue aprobado en todas las ORs creadas
+                        description: Cantidad total ($) de lo que fue aprobado en todas las ORs creadas
                           a partir de una cita en un tablero. / Total amount($)
                           of what was approved in all ORs created from an
                           appointment in a dashboard.
@@ -6646,8 +6750,8 @@ paths:
       description: Al llamado de este recurso, se obtendrán todos los puntos de
         inspección de la última OR cargada en
         ClearMechanic según un número VIN dado. / When calling this resource,
-        the details of the Repair Order, including inspection items, will be
-        returned according to the given VIN.
+        all the inspection items of the last uploaded RO in ClearMechanic
+        will be returned according to the given VIN.
       security:
         - Authorization: []
       parameters:
@@ -6764,7 +6868,7 @@ paths:
                         type: string
                         format: YYYYMMDDHHmm
                       LastUpdatedTime:
-                        description: Fecha y hora en la que se subió la Orden de Reparación. / Date and
+                        description: Fecha y hora de la última actualización de la OR. / Date and
                           time that the Repair Order was updated.
                         type: string
                         format: YYYYMMDDHHmm
@@ -6926,7 +7030,7 @@ paths:
                   example: "2022-08-25T12:15:56Z"
                 duration:
                   type: string
-                  description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:Ss format
+                  description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:SS format
                   example: "01:00:00"
                 cmosPlanningId:
                   type: integer
@@ -6983,10 +7087,10 @@ paths:
                   message:
                     type: string
                     description: Mensaje de confirmación de la operación. / Confirmation message.
-                    example: El trabajo fue agregado correctamente en la cita/The job was successfully added to the appointment
+                    example: El trabajo fue agregado correctamente en la OR/The job was successfully added to the RO
                   data:
                     type: array
-                    description: Lista con los trabajos agregados a la cita. / List of jobs added to the appointment.
+                    description: Lista con los trabajos agregados a la OR. / List of jobs added to the RO.
                     items:
                       type: object
                       required:
@@ -7020,7 +7124,7 @@ paths:
                           example: "2022-08-25T12:15:56Z"
                         duration:
                           type: string
-                          description: Duración estimada del trabajo. / Estimated duration of the job in HH:MM:Ss format
+                          description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:SS format
                           example: "01:00:00"
                         planningId:
                           type: integer
@@ -7056,7 +7160,7 @@ paths:
       security:
         - Authorization: []
       requestBody:
-        description: Cuerpo requerido para crear una planificación del trabajo en CM.
+        description: Cuerpo requerido para crear una planificación del trabajo en CM. / Body required to create a job planning in CM.
         required: true
         content:
           application/json:
@@ -7103,7 +7207,7 @@ paths:
                   example: "2022-08-25T12:15:56Z"
                 duration:
                   type: string
-                  description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:Ss format
+                  description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:SS format
                   example: "01:00:00"
                 action:
                   type: string
@@ -7156,7 +7260,7 @@ paths:
       security:
         - Authorization: []
       requestBody:
-        description: Cuerpo requerido para crear una planificación del trabajo en CM.
+        description: Cuerpo requerido para crear una planificación del trabajo en CM. / Body required to create a job planning in CM.
         required: true
         content:
           application/json:
@@ -7198,7 +7302,7 @@ paths:
                   example: "2022-08-25T12:15:56Z"
                 duration:
                   type: string
-                  description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:Ss format
+                  description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:SS format
                   example: "01:00:00"
                 cmosPlanningId:
                   type: integer
@@ -7292,7 +7396,7 @@ paths:
                           example: "2022-08-25T12:15:56Z"
                         duration:
                           type: string
-                          description: Duración estimada del trabajo en formato HH:MM:ss. / Estimated duration of the job in HH:MM:ss format
+                          description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:SS format
                           example: "01:00:00"
                         planningId:
                           type: integer
@@ -7322,13 +7426,13 @@ paths:
     patch:
       tags:
         - WorkshopPlanner
-      summary: Actualiza una planificación a partir de un trabajo asignado en CM.
+      summary: Actualiza una planificación a partir de un trabajo asignado en CM. / Updates a planning from a job assigned in CM.
       operationId: updateAppointmentJob
-      description: Este recurso permite actualizar una planificación en el sistema CM a partir de un trabajo previamente asignado. Incluye los detalles del trabajo, la duración estimada y los ítems de inspección relacionados.
+      description: Este recurso permite actualizar una planificación en el sistema CM a partir de un trabajo previamente asignado. Incluye los detalles del trabajo, la duración estimada y los ítems de inspección relacionados. / This resource updates a planning in CM from a previously assigned job. It includes the job details, the estimated duration and the related inspection items.
       security:
         - Authorization: []
       requestBody:
-        description: Cuerpo requerido para crear una planificación del trabajo en CM.
+        description: Cuerpo requerido para crear una planificación del trabajo en CM. / Body required to create a job planning in CM.
         required: true
         content:
           application/json:
@@ -7362,7 +7466,7 @@ paths:
                   example: "2022-08-25T12:15:56Z"
                 duration:
                   type: string
-                  description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:Ss format
+                  description: Duración estimada del trabajo en formato HH:MM:SS. / Estimated duration of the job in HH:MM:SS format
                   example: "01:00:00"
                 action:
                   type: string
@@ -7386,9 +7490,9 @@ paths:
     delete:
       tags:
         - WorkshopPlanner
-      summary: Elimina una planificación a partir de un trabajo asignado en CM. / Deletes a job assigned for an appointment en CM.
+      summary: Elimina una planificación a partir de un trabajo asignado en CM. / Deletes a job assigned to an appointment in CM.
       operationId: deleteAppointmentJob
-      description: Este recurso permite eliminar una planificación en el sistema CM a partir de un trabajo previamente asignado. Incluye los detalles del trabajo, la duración estimada y los ítems de inspección relacionados.
+      description: Este recurso permite eliminar una planificación en el sistema CM a partir de un trabajo previamente asignado a la cita. / This resource deletes a planning in CM from a job previously assigned to the appointment.
       security:
         - Authorization: []
       responses:
@@ -7413,11 +7517,11 @@ paths:
         - Authorization: []
       responses:
         "200":
-            description: Listado de planeaciones en ClearMechanic.
+            description: Listado de planeaciones en ClearMechanic. / List of plannings in ClearMechanic.
             content:
               application/json:
                 examples:
-                  Trabajo agregado:
+                  Listado de planeaciones:
                     value:
                       success: true
                       message: null
@@ -7443,11 +7547,11 @@ paths:
                       example: true
                     message:
                       type: string
-                      description: Mensaje de confirmación de la operación. / Confirmation message.
-                      example: El trabajo fue agregado correctamente en la cita/The job was successfully added to the appointment
+                      description: Mensaje descriptivo, en caso de existir. / Descriptive message, if any.
+                      example: null
                     data:
                       type: array
-                      description: Lista con los trabajos agregados a la cita. / List of jobs added to the appointment.
+                      description: Lista con las planeaciones configuradas en ClearMechanic. / List of plannings configured in ClearMechanic.
                       items:
                         type: object
                         required:
@@ -7557,7 +7661,7 @@ paths:
         - Authorization: []
       responses:
         "200":
-            description: Listado de prioridades de tarea en ClearMechanic.
+            description: Listado de prioridades de tarea en ClearMechanic. / List of task priorities in ClearMechanic.
             content:
               application/json:
                 examples:
@@ -7585,8 +7689,8 @@ paths:
                       example: true
                     message:
                       type: string
-                      description: Mensaje de confirmación de la operación. / Confirmation message.
-                      example: El trabajo fue agregado correctamente en la cita/The job was successfully added to the appointment
+                      description: Mensaje descriptivo, en caso de existir. / Descriptive message, if any.
+                      example: null
                     data:
                       type: array
                       description: Lista con las prioridades de tarea configuradas en ClearMechanic. / List of task priorities configured in ClearMechanic.
@@ -7624,7 +7728,7 @@ paths:
         - Authorization: []
       responses:
         "200":
-            description: Listado de tipos de tarea en ClearMechanic.
+            description: Listado de tipos de tarea en ClearMechanic. / List of task types in ClearMechanic.
             content:
               application/json:
                 examples:
@@ -7652,8 +7756,8 @@ paths:
                       example: true
                     message:
                       type: string
-                      description: Mensaje de confirmación de la operación. / Confirmation message.
-                      example: El trabajo fue agregado correctamente en la cita/The job was successfully added to the appointment
+                      description: Mensaje descriptivo, en caso de existir. / Descriptive message, if any.
+                      example: null
                     data:
                       type: array
                       description: Lista con los tipos de tarea configuradas en ClearMechanic. / List of task types configured in ClearMechanic.
@@ -7691,7 +7795,7 @@ paths:
         - Authorization: []
       responses:
         "200":
-            description: Listado de propósitos de tarea en ClearMechanic.
+            description: Listado de propósitos de tarea en ClearMechanic. / List of task purposes in ClearMechanic.
             content:
               application/json:
                 examples:
@@ -7719,8 +7823,8 @@ paths:
                       example: true
                     message:
                       type: string
-                      description: Mensaje de confirmación de la operación. / Confirmation message.
-                      example: El trabajo fue agregado correctamente en la cita/The job was successfully added to the appointment
+                      description: Mensaje descriptivo, en caso de existir. / Descriptive message, if any.
+                      example: null
                     data:
                       type: array
                       description: Lista con los propósitos de tarea configuradas en ClearMechanic. / List of task purposes configured in ClearMechanic.
@@ -8689,7 +8793,7 @@ components:
         example: Servicio 10,000km
     RepairShopIdQuery:
       name: repairShopId
-      description: Parámetro de autenticación de la agencia o taller proporcionada por
+      description: Parámetro de autenticación de la agencia o taller proporcionado por
         ClearMechanic. / Authentication parameter of the dealership or
         workshop provided by ClearMechanic.
       in: query
@@ -8846,7 +8950,7 @@ components:
         example: "fe883e44-17b5-4526-b31d-232670232f1c"
     ApiKeyQuery:
       name: apiKey
-      description: Parámetro de autenticación de la agencia o taller proporcionada por
+      description: Parámetro de autenticación de la agencia o taller proporcionado por
         ClearMechanic. / Authentication parameter of the dealership or
         workshop provided by ClearMechanic.
       in: query
@@ -8975,51 +9079,51 @@ components:
           $ref: '#/components/schemas/StandardOperation'
     customizableFields:
       type: array
-      description: Campos personalizables asociados a la OR, cliente y vehículo.
+      description: Campos personalizables asociados a la OR, cliente y vehículo. / Customizable fields associated with the RO, customer and vehicle.
       items:
         type: object
         properties:
           type:
             type: string
-            description: Tipo de campo personalizado.
+            description: Tipo de campo personalizado. / Custom field type.
             example: FreeText | Numeric | Time | Date | Currency | Select | MultiSelect
           fieldSection:
             type: string
-            description: Sección en ClearMechanic donde debe ir el campo personalizable. 
+            description: Sección en ClearMechanic donde debe ir el campo personalizable. / ClearMechanic section where the custom field belongs.
             example: WebCustomerInfo | WebVehicleInfo | WebOrderInfo
           name:
             type: string
-            description: Nombre del campo personalizado.
+            description: Nombre del campo personalizado. / Custom field name.
             example: Campo de texto libre
           value:
             oneOf:
               - type: string
               - type: number
               - type: object
-                description: Objeto de Select y Multi Select
+                description: Objeto de Select y Multi Select. / Select and Multi Select object.
                 properties:
                   name:
                     type: string
-                    description: Nombre de la opción seleccionada
+                    description: Nombre de la opción seleccionada. / Selected option name.
                     example: Premium
                   id:
                     type: string
-                    description: ID asignado a la opción
+                    description: ID asignado a la opción. / Option ID.
                     example: P
               - type: array
                 items:
                   type: object
-                  description: Objeto de Select y Multi Select
+                  description: Objeto de Select y Multi Select. / Select and Multi Select object.
                   properties:
                     name:
                       type: string
-                      description: Nombre de la opción seleccionada
+                      description: Nombre de la opción seleccionada. / Selected option name.
                       example: Premium
                     id:
                       type: string
-                      description: ID asignado a la opción
+                      description: ID asignado a la opción. / Option ID.
                       example: P
-            description: Valor del campo personalizado.
+            description: Valor del campo personalizado. / Custom field value.
     StandardOperation:
       type: object
       properties:
@@ -9090,7 +9194,7 @@ components:
               a la aprobación del cliente final. Los estatus
               disponibles son 'Pending', 'Approved' y 'Rejected' /
               Status of the inspection item regarding the client
-              decision, the posible statuses are: 'Pending',
+              decision, the possible statuses are: 'Pending',
               'Approved', 'Rejected'"
             type: string
             example: Approved Rejected Pending
@@ -9604,7 +9708,7 @@ components:
           description: Identificador del usuario que realizó la programación. / Identifier of the user who performed the scheduling.
           type: string
         appointmentOrigin:
-          description: Origen de la cita
+          description: Origen de la cita. / Appointment origin.
           allOf:
             - $ref: '#/components/schemas/AppointmentOrigin'
         appointmentReasons:
@@ -9819,7 +9923,7 @@ components:
         - data 
     PagedOrders:
       type: object
-      description: Página de resultados de órdenes.
+      description: Página de resultados de órdenes. / Page of order results.
       properties:
         pageSize:
           type: integer
@@ -10117,7 +10221,7 @@ components:
         - orderNumber
     OrderType:
       type: object
-      description: Tipo de orden asociado (por ejemplo, Servicio).
+      description: Tipo de orden asociado (por ejemplo, Servicio). / Associated order type (e.g. Service).
       properties:
         id:
           type: string
@@ -10129,7 +10233,7 @@ components:
  
     Technician:
       type: object
-      description: Técnico asignado a la orden.
+      description: Técnico asignado a la orden. / Technician assigned to the order.
       properties:
         technicianId:
           type: string
@@ -10198,16 +10302,16 @@ components:
       properties:
         success:
           type: boolean
-          description: Indica si la operación fue exitosa.
+          description: Indica si la operación fue exitosa. / Indicates if the operation was successful.
           example: true
         message:
           type: string
           nullable: true
-          description: Mensaje descriptivo, en caso de existir.
+          description: Mensaje descriptivo, en caso de existir. / Descriptive message, if any.
           example: null
         data:
           type: array
-          description: Listado de opciones de movilidad.
+          description: Detalle de la cita. / Appointment detail.
           items:
             $ref: '#/components/schemas/AppointmentDetail'
       required:
@@ -10477,7 +10581,7 @@ components:
               description: Placas del vehículo. / Vehicle license plates.
               type: string
             brand:
-              description: Marca del vehículo. / Vehicle brand(make)
+              description: Marca del vehículo. / Vehicle brand (make)
               type: string
             model:
               description: Modelo del vehículo. / Vehicle model.
