@@ -7662,7 +7662,7 @@ components:
       required:
         - firstName
         - mobile
-    CustomerRequest:
+    CustomerData:
       type: object
       properties:
         cmosCustomerId:
@@ -7726,6 +7726,17 @@ components:
         - firstName
         - mobile
         - createdAt
+    CustomerRequest:
+      allOf:
+        - type: object
+          properties:
+            customerId:
+              type: string
+              example: CA-112233
+          required:
+            - customerId
+            - cmosCustomerId
+        - $ref: "#/components/schemas/CustomerData"
     CustomerResponse:
       allOf:
         - type: object
@@ -7735,7 +7746,7 @@ components:
               example: CA-112233
           required:
             - customerId
-        - $ref: "#/components/schemas/CustomerRequest"
+        - $ref: "#/components/schemas/CustomerData"
     VehicleRequest:
       type: object
       properties:
