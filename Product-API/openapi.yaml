@@ -666,7 +666,7 @@ paths:
           $ref: '#/components/responses/404'
         "500":
           $ref: '#/components/responses/500'
-  /cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}:
+  /api/cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}:
     patch:
       tags: [Appointment Reason Estimates]
       summary: Update an appointment reason's estimate fields or assigned technician.
@@ -697,11 +697,9 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           $ref: '#/components/responses/404'
-        '422':
-          $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
-  /cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates:
+  /api/cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates:
     post:
       tags: [Appointment Reason Estimates]
       summary: Add an estimate to an appointment reason.
@@ -760,11 +758,9 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           $ref: '#/components/responses/404'
-        '422':
-          $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
-  /cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates/{estimateId}:
+  /api/cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates/{estimateId}:
     patch:
       tags: [Appointment Reason Estimates]
       summary: Update an estimate.
@@ -782,7 +778,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppointmentEstimateFields'
+              $ref: '#/components/schemas/AppointmentEstimateUpdate'
             example:
               estimateName: Updated engine oil
               quantity: 5
@@ -796,8 +792,6 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           $ref: '#/components/responses/404'
-        '422':
-          $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
     delete:
@@ -821,8 +815,6 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           $ref: '#/components/responses/404'
-        '422':
-          $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
   /cm/appointmentReasons:
@@ -9917,6 +9909,16 @@ components:
           type: number
           nullable: true
           description: Labor price per hour; null when not applicable.
+    AppointmentEstimateUpdate:
+      allOf:
+        - $ref: '#/components/schemas/AppointmentEstimateFields'
+        - type: object
+          properties:
+            estimateName:
+              type: string
+              minLength: 1
+              description: Optional. When sent, cannot be empty.
+          required: []
     AppointmentEstimateRequest:
       allOf:
         - $ref: '#/components/schemas/AppointmentEstimateFields'
