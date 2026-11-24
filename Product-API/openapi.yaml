@@ -11,6 +11,8 @@ info:
 tags:
   - name: Appointments
     description: Información sobre citas. / Appointments information.
+  - name: Appointment Reason Estimates
+    description: Estimate and technician updates for appointment reasons.
   - name: Orders
     description: Información sobre Órdenes de Reparación. / Repair Orders information.
   - name: Customers
@@ -72,7 +74,9 @@ paths:
                     "appointmentOriginId":"3fa85f64-5717-4562-b3fc-2c963f66afa6",
                     "appointmentReasons": [
                       {
-                        "appointmentReason": "Sonido raro al acelerar."
+                        "appointmentReason": "Sonido raro al acelerar.",
+                        "assignedTo": "7af97f62-75a8-4c95-919e-fc28520a2b8d",
+                        "estimates": [{"estimateName": "Oil change labor", "hours": 0.5, "hourPrice": 980}]
                       },
                       {
                         "appointmentReason": "Mantenimiento"
@@ -111,6 +115,7 @@ paths:
                         "customReasonId": "550e8400-e29b-41d4-a716-446655440000",
                         "customReasonDetailId": "660f9511-f30c-52e5-b827-557766551111",
                         "customReasonExternalId": "Reason1",
+                        "estimates": [{"estimateName": "Engine oil", "partId": "19434094", "quantity": 4, "unitPrice": 164.08}],
                         "customReasonDetailExternalId": "Detail1"
                       },
                       {
@@ -131,6 +136,12 @@ paths:
                 $ref: '#/components/schemas/PostAppointmentsV2Response'
         '400':
           $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
   /cm/appointments:
@@ -205,7 +216,12 @@ paths:
                           orderNumber: OR1234
                           withValetService: true
                           appointmentReasons:
-                            - appointmentReason: Mantenimiento de 50,000 Km
+                            - appointmentReasonId: 7f64abd7-4bf0-453c-acc3-d0ca18f3a33c
+                              appointmentReason: Mantenimiento de 50,000 Km
+                              scheduledToTechnician: true
+                              partUnitPrice: 164.08
+                              laborHours: 1.5
+                              laborHourPrice: 980
                             - appointmentReason: Luz 4x4
                         - appointmentNumber: CDE654321
                           status: CONFIRMED
@@ -396,15 +412,20 @@ paths:
                                 reasons.
                               type: array
                               items:
-                                properties:
-                                  appointmentReason:
-                                    description: Descripción del motivo de la cita. / Appointment reason
-                                      description.
-                                    type: string
+                                $ref: '#/components/schemas/AppointmentListReason'
+                            customReasons:
+                              type: array
+                              description: Custom reasons without estimates.
+                              items:
+                                $ref: '#/components/schemas/AppointmentCustomReasonDetail'
         "400":
           $ref: '#/components/responses/400'
+        "401":
+          $ref: '#/components/responses/401'
         "404":
           $ref: '#/components/responses/404'
+        "422":
+          $ref: '#/components/responses/422'
         "500":
           $ref: '#/components/responses/500'
   "/cm/appointments/{appointmentNumber}":
@@ -428,12 +449,39 @@ paths:
           description: Solicitud completada de forma satisfactoria. / Successful request.
           content:
             application/json:
+              example:
+                success: true
+                message: null
+                data:
+                  - appointmentNumber: ABC123456
+                    status: UNCONFIRMED
+                    customerId: 608ed2b4-7e87-4cc3-8064-29198132ab15
+                    vehicleId: 80297a7c-5850-422a-875c-2f8b058961e9
+                    startDate: '2026-10-09T10:00:00Z'
+                    endDate: '2026-10-09T10:30:00Z'
+                    duration: 30
+                    appointmentReasons:
+                      - appointmentReasonId: 7f64abd7-4bf0-453c-acc3-d0ca18f3a33c
+                        appointmentReason: Maintenance
+                        assignedTo: 7af97f62-75a8-4c95-919e-fc28520a2b8d
+                        assignedToName: Technician
+                        scheduledToTechnician: true
+                        estimates:
+                          - estimateId: e1b2c3d4-0001-0001-0001-000000000003
+                            estimateName: Engine oil
+                            quantity: 4
+                            unitPrice: 164.08
+                    customReasons: []
               schema:
                 $ref: '#/components/schemas/GetAppointmentByIdResponse'
         "400":
           $ref: '#/components/responses/400'
+        "401":
+          $ref: '#/components/responses/401'
         "404":
           $ref: '#/components/responses/404'
+        "422":
+          $ref: '#/components/responses/422'
         "500":
           $ref: '#/components/responses/500'
     patch:
@@ -617,6 +665,165 @@ paths:
         "404":
           $ref: '#/components/responses/404'
         "500":
+          $ref: '#/components/responses/500'
+  /cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}:
+    patch:
+      tags: [Appointment Reason Estimates]
+      summary: Update an appointment reason's estimate fields or assigned technician.
+      operationId: updateAppointmentReasonEstimate
+      description: Partial update; only supplied fields are modified. Estimates are updated separately.
+      security:
+        - Authorization: []
+      parameters:
+        - $ref: '#/components/parameters/WorkshopIdQuery'
+        - $ref: '#/components/parameters/AppointmentNumberPath'
+        - $ref: '#/components/parameters/AppointmentReasonIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppointmentReasonPatch'
+            example:
+              assignedTo: 7af97f62-75a8-4c95-919e-fc28520a2b8d
+              hours: 2
+              hourPrice: 1000
+      responses:
+        '204':
+          description: Appointment reason updated; no response body.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates:
+    post:
+      tags: [Appointment Reason Estimates]
+      summary: Add an estimate to an appointment reason.
+      operationId: createAppointmentReasonEstimate
+      security:
+        - Authorization: []
+      parameters:
+        - $ref: '#/components/parameters/WorkshopIdQuery'
+        - $ref: '#/components/parameters/AppointmentNumberPath'
+        - $ref: '#/components/parameters/AppointmentReasonIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppointmentEstimateRequest'
+            example:
+              estimateName: Engine oil
+              partId: '19434094'
+              quantity: 4
+              unitCost: 130
+              unitPrice: 164.08
+              availability: 20
+              hours: null
+              hourPrice: null
+      responses:
+        '201':
+          description: Estimate created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    $ref: '#/components/schemas/AppointmentEstimateResponse'
+              example:
+                success: true
+                message: Estimate successfully created.
+                data:
+                  estimateId: e1b2c3d4-0001-0001-0001-000000000003
+                  estimateName: Engine oil
+                  partId: '19434094'
+                  quantity: 4
+                  unitCost: 130
+                  unitPrice: 164.08
+                  availability: 20
+                  hours: null
+                  hourPrice: null
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates/{estimateId}:
+    patch:
+      tags: [Appointment Reason Estimates]
+      summary: Update an estimate.
+      operationId: updateAppointmentReasonEstimateItem
+      description: Partial update; only supplied fields are modified. The estimate name cannot be empty.
+      security:
+        - Authorization: []
+      parameters:
+        - $ref: '#/components/parameters/WorkshopIdQuery'
+        - $ref: '#/components/parameters/AppointmentNumberPath'
+        - $ref: '#/components/parameters/AppointmentReasonIdPath'
+        - $ref: '#/components/parameters/AppointmentEstimateIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppointmentEstimateFields'
+            example:
+              estimateName: Updated engine oil
+              quantity: 5
+              unitPrice: 160
+      responses:
+        '204':
+          description: Estimate updated; no response body.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      tags: [Appointment Reason Estimates]
+      summary: Permanently delete an estimate.
+      operationId: deleteAppointmentReasonEstimate
+      description: This operation permanently deletes the estimate and cannot be undone.
+      security:
+        - Authorization: []
+      parameters:
+        - $ref: '#/components/parameters/WorkshopIdQuery'
+        - $ref: '#/components/parameters/AppointmentNumberPath'
+        - $ref: '#/components/parameters/AppointmentReasonIdPath'
+        - $ref: '#/components/parameters/AppointmentEstimateIdPath'
+      responses:
+        '204':
+          description: Estimate deleted; no response body.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
           $ref: '#/components/responses/500'
   /cm/appointmentReasons:
     post:
@@ -2038,20 +2245,15 @@ paths:
                         status: Invoiced
                         total: 5000
                         serviceType: Maintenance
-                        customizableFields: [
-                          {
-                            "name": "Código postal",
-                            "value": 1804,
-                            "fieldSection": "WebCustomerInfo",
-                            "type": "Numeric"
-                          },
-                          {
-                            "name": "Número de chasis",
-                            "value": "9658-0005-458",
-                            "fieldSection": “WebVehicleInfo”,
-                            "type": "FreeText"
-                          }
-                        ]
+                        customizableFields:
+                          - name: Código postal
+                            value: 1804
+                            fieldSection: WebCustomerInfo
+                            type: Numeric
+                          - name: Número de chasis
+                            value: 9658-0005-458
+                            fieldSection: WebVehicleInfo
+                            type: FreeText
               schema:
                 type: object
                 required:
@@ -6918,7 +7120,7 @@ paths:
                   value:
                     success: true
                     message: "Jobs retrieved successfully"
-                    data": [
+                    data: [
                       {
                         "jobId": "1f1d1ace-3729-4158-bac5-8024adc27234",
                         "cmosAssignedEmployeeId": "81ce6897-0161-457a-8a71-cf4e4a0db354",
@@ -6968,7 +7170,7 @@ paths:
                           }
                         ]
                       }
-                    ]
+                      ]
         "400":
           $ref: '#/components/responses/400'
         "404":
@@ -8586,6 +8788,18 @@ components:
       scheme: bearer
       bearerFormat: jwt
   responses:
+    '401':
+      description: Missing, invalid, expired, or unauthorized credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    '422':
+      description: The request could not be processed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
     '400':
       description: Error de solicitud incorrecta. Hay un error de sintaxis por parte
             del cliente. / Failed request. There is a syntax error on the client
@@ -8614,6 +8828,22 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
   parameters:
+    AppointmentReasonIdPath:
+      name: appointmentReasonId
+      in: path
+      required: true
+      description: Identifier of the appointment reason belonging to this appointment.
+      schema:
+        type: string
+        format: uuid
+    AppointmentEstimateIdPath:
+      name: estimateId
+      in: path
+      required: true
+      description: Identifier of the estimate belonging to this appointment reason.
+      schema:
+        type: string
+        format: uuid
     OrderNumberPath:
       name: orderNumber
       description: Identificador único de una Orden de Reparación en el tablero del taller o agencia en ClearMechanic. / Repair Order unique identifier in the workshop or dealership ClearMechanic dashboard.
@@ -9596,8 +9826,157 @@ components:
       anyOf:
         - required: [vin]
         - required: [licensePlate, brand, model]
+    AppointmentListReason:
+      type: object
+      properties:
+        appointmentReasonId:
+          type: string
+          format: uuid
+          description: Appointment reason identifier used for estimate operations.
+        appointmentReason:
+          type: string
+          description: Appointment reason name.
+        scheduledToTechnician:
+          type: boolean
+          description: Whether the reason is scheduled to a technician.
+        quantity:
+          type: number
+          nullable: true
+          description: General quantity.
+        partUnitPrice:
+          type: number
+          nullable: true
+          description: General part unit price.
+        partNumber:
+          type: string
+          nullable: true
+          description: General part number.
+        laborHours:
+          type: number
+          nullable: true
+          description: General labor hours.
+        laborHourPrice:
+          type: number
+          nullable: true
+          description: General labor price per hour.
+    AppointmentCustomReasonDetail:
+      type: object
+      properties:
+        customReasonId:
+          type: string
+          format: uuid
+          description: Custom reason identifier.
+        customReason:
+          type: string
+          description: Custom reason name.
+        assignedTo:
+          type: string
+          format: uuid
+          nullable: true
+          description: Assigned technician identifier.
+        assignedToName:
+          type: string
+          nullable: true
+          description: Assigned technician name.
+        scheduledToTechnician:
+          type: boolean
+          description: Whether the reason is scheduled to a technician.
+    AppointmentEstimateFields:
+      type: object
+      description: Estimate for a part, labor, or a combination of both.
+      properties:
+        estimateName:
+          type: string
+          minLength: 1
+          description: Name of the part or labor; must not be empty.
+        partId:
+          type: string
+          nullable: true
+          description: External identifier supplied by the integration.
+        quantity:
+          type: number
+          nullable: true
+          description: Part quantity; null when not applicable.
+        unitCost:
+          type: number
+          nullable: true
+          description: Part unit cost; null when not applicable.
+        unitPrice:
+          type: number
+          nullable: true
+          description: Part unit price; null when not applicable.
+        availability:
+          type: number
+          nullable: true
+          description: Inventory availability; null when not applicable.
+        hours:
+          type: number
+          nullable: true
+          description: Labor hours; null when not applicable.
+        hourPrice:
+          type: number
+          nullable: true
+          description: Labor price per hour; null when not applicable.
+    AppointmentEstimateRequest:
+      allOf:
+        - $ref: '#/components/schemas/AppointmentEstimateFields'
+        - type: object
+          required: [estimateName]
+    AppointmentEstimateResponse:
+      allOf:
+        - $ref: '#/components/schemas/AppointmentEstimateFields'
+        - type: object
+          properties:
+            estimateId:
+              type: string
+              format: uuid
+              description: Identifier used to update or delete the estimate.
+    AppointmentReasonPatch:
+      type: object
+      properties:
+        assignedTo:
+          type: string
+          format: uuid
+          nullable: true
+          description: Technician ID; conditionally required when automatic planning is enabled and no technician is assigned.
+        quantity:
+          type: number
+          nullable: true
+          description: General quantity for the reason.
+        unitCost:
+          type: number
+          nullable: true
+          description: General unit cost for the reason.
+        unitPrice:
+          type: number
+          nullable: true
+          description: General unit price for the reason.
+        availability:
+          type: number
+          nullable: true
+          description: General availability for the reason.
+        hours:
+          type: number
+          nullable: true
+          description: General labor hours for the reason.
+        hourPrice:
+          type: number
+          nullable: true
+          description: General labor price per hour for the reason.
+    AppointmentReasonEstimateFields:
+      allOf:
+        - $ref: '#/components/schemas/AppointmentReasonPatch'
+        - type: object
+          properties:
+            estimates:
+              type: array
+              description: Estimates for the reason. An empty array indicates no estimates.
+              items:
+                $ref: '#/components/schemas/AppointmentEstimateRequest'
     AppointmentReasonRequest:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/AppointmentReasonEstimateFields'
       required:
         - appointmentReason
       properties:
@@ -9606,6 +9985,8 @@ components:
           type: string
     CustomReasonRequest:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/AppointmentReasonEstimateFields'
       properties:
         customReasonId:
           description: ID de la razón personalizada (GUID). / Custom reason ID (GUID).
@@ -10467,7 +10848,8 @@ components:
         customReasons:
           type: array
           description: "Motivos personalizados de la cita. / Custom appointment reasons."
-          items: {}
+          items:
+            $ref: '#/components/schemas/AppointmentCustomReasonDetail'
           example: []
         mobilityOptions:
           $ref: '#/components/schemas/MobilityOptions'
@@ -10502,6 +10884,8 @@ components:
     AppointmentReason:
       type: object
       description: "Motivo de la cita. / Appointment reason."
+      allOf:
+        - $ref: '#/components/schemas/AppointmentReasonEstimateFields'
       required:
         - appointmentReasonId
         - appointmentReason
@@ -10515,6 +10899,13 @@ components:
           type: string
           description: "Descripción del motivo de la cita. / Appointment reason description."
           example: Sonido raro al acelerar.
+        assignedToName:
+          type: string
+          nullable: true
+          description: Assigned technician name, or null when unassigned.
+        scheduledToTechnician:
+          type: boolean
+          description: Whether the reason is scheduled to a technician.
  
     MobilityOptions:
       type: object
