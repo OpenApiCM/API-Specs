@@ -695,8 +695,12 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
   /api/cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates:
@@ -756,8 +760,12 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
   /api/cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates/{estimateId}:
@@ -790,8 +798,12 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
     delete:
@@ -813,8 +825,12 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
   /cm/appointmentReasons:
@@ -8780,6 +8796,12 @@ components:
       scheme: bearer
       bearerFormat: jwt
   responses:
+    '403':
+      description: Sin acceso al recurso. / No access to the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
     '401':
       description: Missing, invalid, expired, or unauthorized credentials.
       content:
