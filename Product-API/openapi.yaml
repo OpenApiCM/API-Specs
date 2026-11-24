@@ -451,27 +451,27 @@ paths:
             application/json:
               example:
                 success: true
-                message: null
+                message: Successful response
                 data:
-                  - appointmentNumber: ABC123456
-                    status: UNCONFIRMED
-                    customerId: 608ed2b4-7e87-4cc3-8064-29198132ab15
-                    vehicleId: 80297a7c-5850-422a-875c-2f8b058961e9
-                    startDate: '2026-10-09T10:00:00Z'
-                    endDate: '2026-10-09T10:30:00Z'
-                    duration: 30
-                    appointmentReasons:
-                      - appointmentReasonId: 7f64abd7-4bf0-453c-acc3-d0ca18f3a33c
-                        appointmentReason: Maintenance
-                        assignedTo: 7af97f62-75a8-4c95-919e-fc28520a2b8d
-                        assignedToName: Technician
-                        scheduledToTechnician: true
-                        estimates:
-                          - estimateId: e1b2c3d4-0001-0001-0001-000000000003
-                            estimateName: Engine oil
-                            quantity: 4
-                            unitPrice: 164.08
-                    customReasons: []
+                  appointmentNumber: ABC123456
+                  status: UNCONFIRMED
+                  customerId: 608ed2b4-7e87-4cc3-8064-29198132ab15
+                  vehicleId: 80297a7c-5850-422a-875c-2f8b058961e9
+                  startDate: '2026-10-09T10:00:00Z'
+                  endDate: '2026-10-09T10:30:00Z'
+                  duration: 30
+                  appointmentReasons:
+                    - appointmentReasonId: 7f64abd7-4bf0-453c-acc3-d0ca18f3a33c
+                      appointmentReason: Maintenance
+                      assignedTo: 7af97f62-75a8-4c95-919e-fc28520a2b8d
+                      assignedToName: Technician
+                      scheduledToTechnician: true
+                      estimates:
+                        - estimateId: e1b2c3d4-0001-0001-0001-000000000003
+                          estimateName: Engine oil
+                          quantity: 4
+                          unitPrice: 164.08
+                  customReasons: []
               schema:
                 $ref: '#/components/schemas/GetAppointmentByIdResponse'
         "400":
@@ -10487,6 +10487,7 @@ components:
           description: Fecha y hora de la última actualización de la orden. / Date and time the order was last updated.
           example: "2026-07-22T00:32:30.838"
         orderType:
+          type: object
           allOf:
             - $ref: "#/components/schemas/OrderType"
           nullable: true
@@ -10691,10 +10692,9 @@ components:
           description: Mensaje descriptivo, en caso de existir. / Descriptive message, if any.
           example: null
         data:
-          type: array
           description: Detalle de la cita. / Appointment detail.
-          items:
-            $ref: '#/components/schemas/AppointmentDetail'
+          allOf:
+            - $ref: '#/components/schemas/AppointmentDetail'
       required:
         - success
         - data
