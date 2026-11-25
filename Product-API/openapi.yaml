@@ -666,7 +666,7 @@ paths:
           $ref: '#/components/responses/404'
         "500":
           $ref: '#/components/responses/500'
-  /api/cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}:
+  /cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}:
     patch:
       tags: [Appointment Reason Estimates]
       summary: Update an appointment reason's estimate fields or assigned technician.
@@ -703,7 +703,7 @@ paths:
           $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
-  /api/cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates:
+  /cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates:
     post:
       tags: [Appointment Reason Estimates]
       summary: Add an estimate to an appointment reason.
@@ -768,7 +768,7 @@ paths:
           $ref: '#/components/responses/422'
         '500':
           $ref: '#/components/responses/500'
-  /api/cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates/{estimateId}:
+  /cm/appointments/{appointmentNumber}/appointmentReasons/{appointmentReasonId}/estimates/{estimateId}:
     patch:
       tags: [Appointment Reason Estimates]
       summary: Update an estimate.
