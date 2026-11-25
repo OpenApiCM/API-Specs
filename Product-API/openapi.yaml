@@ -72,6 +72,7 @@ paths:
                     "userWhoScheduleId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                     "userWhoScheduleExternalId": "User2",
                     "appointmentOriginId":"3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "mobilityOptionId": 0,
                     "appointmentReasons": [
                       {
                         "appointmentReason": "Sonido raro al acelerar.",
@@ -110,6 +111,7 @@ paths:
                     "userWhoScheduleId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                     "userWhoScheduleExternalId": "User2",
                     "appointmentOriginId":"3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "mobilityOptionId": 0,
                     "customReasons": [
                       {
                         "customReasonId": "550e8400-e29b-41d4-a716-446655440000",
@@ -9940,7 +9942,6 @@ components:
               type: string
               minLength: 1
               description: Optional. When sent, cannot be empty.
-          required: []
     AppointmentEstimateRequest:
       allOf:
         - $ref: '#/components/schemas/AppointmentEstimateFields'
