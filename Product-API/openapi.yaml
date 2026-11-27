@@ -224,7 +224,8 @@ paths:
                               partUnitPrice: 164.08
                               laborHours: 1.5
                               laborHourPrice: 980
-                            - appointmentReason: Luz 4x4
+                            - appointmentReasonId: 3c7b22aa-4145-4a8b-b47d-19e3da377f17
+                              appointmentReason: Luz 4x4
                         - appointmentNumber: CDE654321
                           status: CONFIRMED
                           appointmentOrigin: Open API
